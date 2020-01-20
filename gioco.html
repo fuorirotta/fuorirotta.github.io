@@ -1,0 +1,2138 @@
+<!doctype html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Fuori Rotta - Mary Poppins 10 anni dopo</title>
+        <script src="//cdn.jsdelivr.net/phaser/2.5.0/phaser.min.js"></script>
+    </head>
+    <body style= "margin:auto; max-width: 1024px; display: block; background-image: url('Immagini/sfond4.png');">
+
+		
+    <script type="text/javascript">
+
+    window.onload = function() {
+
+        //  Note that this html file is set to pull down Phaser 2.5.0 from the JS Delivr CDN.
+        //  Although it will work fine with this tutorial, it's almost certainly not the most current version.
+        //  Be sure to replace it with an updated version before you start experimenting with adding your own code.
+		
+        var game = new Phaser.Game(1024, 768, Phaser.CANVAS, '', { preload: preload, create: create, update: update, render: render});
+
+        function preload () {
+	
+	game.load.spritesheet('cade', 'Immagini/cade.png', 78.35, 70);			
+	game.load.image('cielo1', 'Immagini/sfondo1.png');
+	game.load.image('cielo2', 'Immagini/sfondo2.png');
+	game.load.image('cielo3', 'Immagini/sfondo3.png');
+	game.load.image('cielo4', 'Immagini/sfondo4.png');		
+	game.load.image('parigi1', 'Immagini/Parigi1.png');
+	game.load.image('parigi2', 'Immagini/Parigi2.png');
+	game.load.image('parigi3', 'Immagini/Parigi3.png');
+	game.load.image('roma1', 'Immagini/roma11.png');
+	game.load.image('roma2', 'Immagini/roma21.png');
+	game.load.image('roma3', 'Immagini/roma31.png');
+	game.load.image('monumenti', 'Immagini/Misure.png');
+	game.load.image('manica2', 'Immagini/man1.png')
+    game.load.image('case3', 'Immagini/case2new.png');
+    game.load.image('case2', 'Immagini/case1new.png');
+    game.load.image('case1', 'Immagini/case31new.png');
+	game.load.image('manica1','Immagini/manica.png')		
+    game.load.spritesheet('dude', 'Immagini/Mary.png',50.06,70);
+	game.load.spritesheet('mary', 'Immagini/Ombrello_3.png',104,88);
+	game.load.image('trasparente', 'Immagini/Trasparente.png');
+	game.load.image('dx-sx', 'Immagini/Dx-Sx.png');
+	game.load.image('spazio', 'Immagini/Spazio2.png');
+	game.load.image('evita', 'Immagini/Evita.png');
+	game.load.image('raccogliCubi', 'Immagini/RaccogliCubiCarta3.png');
+	game.load.image('su-giu', 'Immagini/Su-Giu.png');
+	game.load.image('manica', 'Immagini/CheckpointManica2.png');
+	game.load.image('parigi', 'Immagini/CheckpointParigi.png');
+	game.load.image('roma', 'Immagini/CheckpointRoma.png');
+    game.load.image('platform', 'Immagini/Piattaforma.png');
+	game.load.image('platformSfumata', 'Immagini/PiattaformaSFUMATA.png');		
+	game.load.image('platformVolante', 'Immagini/PiattaformaVolante.png');
+	game.load.image('platformPiccolina', 'Immagini/PiattaformaPiccolina.png');
+	game.load.image('platformToxic', 'Immagini/PiattaformaToxic.png');
+	game.load.image('platformSabbia', 'Immagini/PiattaformaSabbia.png');
+	game.load.image('platformMattoni', 'Immagini/PiattaformeMattoni.png');
+	game.load.image('platformDritta', 'Immagini/PiattaformaDritta.png');
+	game.load.image('platformCapovolta', 'Immagini/PiattaformaCapovolta.png');
+	game.load.image('platformVerticale', 'Immagini/PiattaformaVerticale.png');
+	game.load.image('platformPiccola', 'Immagini/PiattaformaPiccola.png');
+	game.load.image('platformRoma', 'Immagini/RomaPiattaforma.png');
+	game.load.image('platformRomaPiccola', 'Immagini/PiattaformaRomaPiccola.png');
+	game.load.image('platformColonnaBassa', 'Immagini/ColonnaBassa.png');
+	game.load.image('platformColonnaAlta', 'Immagini/ColonnaAlta.png');
+    game.load.image('interfaccia', 'Immagini/Interfaccia5.png');
+	game.load.image('tavolaCuori', 'Immagini/TavolaCuori.png');
+	game.load.image('pallino', 'Immagini/PallinoBlu.png');
+    game.load.image('pillola', 'Immagini/Pillola.png');
+	game.load.image('ombrello', 'Immagini/Volante.png');
+	game.load.image('orsetto', 'Immagini/Orsetto.png');
+	game.load.image('lampada', 'Immagini/Lamapada2.png');
+	game.load.image('specchio', 'Immagini/Specchio.png');
+	game.load.image('pianta', 'Immagini/Pianta2.png');
+	game.load.image('sciroppo', 'Immagini/Sciroppo.png');
+	game.load.image('aquilone', 'Immagini/Aquilone.png');
+	game.load.image('appendiabiti', 'Immagini/AppendiAbiti.png');
+	game.load.image('mina', 'Immagini/Mina.png');
+	game.load.spritesheet('minaLampo', 'Immagini/MinaLampo2.png',27,18);
+	game.load.image('cartelloMine', 'Immagini/Cartello_Mine.png');
+	game.load.image('spunte', 'Immagini/Spuntoni1.png');
+	game.load.spritesheet('ciao', 'Immagini/ToxicGas.png',148.8,207);
+	game.load.spritesheet('cubiM', 'Immagini/CubiM.png',52,42);
+	game.load.spritesheet('cubiA', 'Immagini/CubiA.png',51.86,44);
+	game.load.spritesheet('cubiR', 'Immagini/CubiR.png',51.86,44);
+	game.load.spritesheet('cubiY', 'Immagini/CubiY2.png',51.87,44);
+	game.load.spritesheet('esplosione', 'Immagini/Esplosione_1.png',76,63);
+	game.load.image('cubo', 'Immagini/block.png');
+    game.load.spritesheet('soldato', 'Immagini/SoldatoCammina.png', 58,76);
+	game.load.spritesheet('soldatoSpara', 'Immagini/SoldatoSpara2.png', 122,144);
+	game.load.spritesheet('aereo', 'Immagini/Aereo.png', 189.666,80);
+	game.load.spritesheet('aereoBombe', 'Immagini/AereoBombe.png', 190.07,80);
+	game.load.spritesheet('esplosioneBombe', 'Immagini/Esplosione_Bombe3.png',110.63,111);
+	game.load.image('proiettile148', 'Immagini/Proiettele148.png');
+	game.load.image('proiettileOro', 'Immagini/ProiettileOro3.png');
+    game.load.image('missile', 'Immagini/Missile2.png');
+	game.load.image('nuvole_mobili', 'Immagini/NuvolaCorta.png');
+	game.load.image('cuboM', 'Immagini/CuboM2.png');
+	game.load.image('cuboA', 'Immagini/CuboA.png');
+	game.load.image('cuboR', 'Immagini/CuboR.png');
+	game.load.image('cuboY', 'Immagini/CuboY.png');
+	game.load.image('pausa', 'Immagini/Pausa2.png');
+	game.load.image('foglioPausa', 'Immagini/pausa122.png');
+	game.load.image('game_over', 'Immagini/GameOver5.png');
+	game.load.image('dacapo', 'Immagini/DaCapo.png');
+	game.load.image('copertina', 'Immagini/Copertina2.png');
+	game.load.image('check', 'Immagini/Checkpoint.png');
+	game.load.image('nuvole', 'Immagini/nuvole.png');
+	game.load.image('pausa1', 'Immagini/pausa3.png');
+	game.load.image('pausa2', 'Immagini/Pausa4.png');
+	game.load.image('pausa3', 'Immagini/pausa5.png');
+	game.load.image('pausa4', 'Immagini/Pausa6.png');
+	game.load.spritesheet('casa', 'Immagini/CasaFinale2.png', 411.25,410);	
+	game.load.image('finaletop', 'Immagini/02_YouWin.jpg');
+	game.load.image('finale', 'Immagini/02_YouWin2.jpg');	
+	game.load.image('picture1', 'Immagini/1sb.png');
+    game.load.image('picture2', 'Immagini/2sb.png');
+    game.load.image('picture3', 'Immagini/3sb.png');
+    game.load.image('picture4', 'Immagini/4sb.png');
+    game.load.image('picture5','Immagini/5sb.png');
+    game.load.image('picture6', 'Immagini/6sb.png');
+    game.load.image('picture7', 'Immagini/7sb.png');
+	game.load.image('picture8', 'Immagini/8sb.png');
+	game.load.image('fine', 'Immagini/copertinafine.png');		
+	game.load.image('extra', 'Immagini/extra1.png');	
+	game.load.image('limite', 'Immagini/Limite.png');			
+	
+			
+}
+		
+var player;
+var immune= false;
+var platforms;
+var facing= 'left';
+var cielo1;
+var cielo2;
+var cielo3;
+var cielo4;
+var monumenti;
+var cursors;
+var jumpButton;
+var spacebar;
+var case2;
+var case3;
+var case1;
+var carro;
+var aereoGroup;
+var aereoAnimation;
+var interfaccia;
+var cuore2;
+var prova;
+var immune=false;
+var cubo;
+var value1;
+var value2;
+var value3;
+var value4;
+var value5;
+var value6;
+var value7;
+var value8;
+var value9;
+var value10;
+var value11;
+var value12;
+var value13;
+var value14;
+var value15;
+var value16;
+var value17;
+var value18;
+var value19;
+var value20;
+var nuvole
+var manica2
+var oggetto_orsetto;
+var soldatoGroup;
+var soldatoSparaGroup;
+var enemyBullets;
+var esplodione;
+var esplodioneAnimation;
+var mina;
+var minaLampo;
+var minaLampoAnimation;
+var cartello_mine;
+var missile;
+var cuboM;
+var cuboA;
+var cuboR;
+var cuboY;
+var cubiM;
+var cubiA;
+var cubiR;
+var cubiY;
+var pausa;
+var foglioPausa;
+var trasparente
+var soldato;
+var soldatoSpara;
+var spunte;
+var ombrello;
+var oggetto_ombrello;
+var oggetto_lampada;
+var oggetto_specchio;
+var oggetto_pianta;
+var oggetto_sciroppo;
+var oggetto_aquilone;
+var oggetto_appendiabiti;
+var aereoBombeGroup;
+var aereoBombe;
+var pallino_1;
+var pallino_2;
+var pallino_3;
+var pallino_4;
+var pallino_5;
+var pallino_6;
+var pallino_7;
+var pallino_8;
+var esplosione;
+var esplosione_1;
+var nuvole_mobili;
+var nuvole_mobili_2;
+var nuvole_mobili_3;
+var nuvole_mobili_4;
+var nuvole_mobili_5;
+var nuvole_mobili_7;
+var dx_sx;
+var spazio;
+var evita;
+var raccogliCubi
+var su_giu;
+var checkpointManica;
+var checkpointParigi;
+var checkpointRoma;
+var lives=2;
+var maxLives= 3;
+var livesCounter;
+var livesIcon;
+var livesCrop;
+var ground = 1500;
+var game_over;
+var esplosioneAereo;
+var playerOldPose = {x:0, y:0};
+var playerNewPose = {x:400, y:0};
+var manica1;		
+var parigi1;
+var parigi2;
+var parigi3;
+var roma1;
+var roma2;
+var roma3;
+var dacapo;
+var check;
+var check1;
+var copertina;
+var pausa1;
+var pausa2;
+var pausa3;
+var pausa4;
+var pausaa;
+var casa;
+var finaletop;
+var finale;	
+var accendi=false;
+var pictureA;
+var pictureB;
+var timer;
+var current = 3;
+var extra;
+var fine;
+var limite;
+var cade
+	
+		
+		
+        function create () {
+      
+			    game.world.setBounds(0,0,44950,768);
+    
+		
+		
+	//SFONDI
+    cielo1 = game.add.sprite(-25, 0, 'cielo1');
+	game.physics.arcade.enable(cielo1);
+	
+	    cielo2 = game.add.sprite(11010, 0, 'cielo2');
+	game.physics.arcade.enable(cielo2);
+			
+		    cielo3 = game.add.sprite(20490, 0, 'cielo3');
+	game.physics.arcade.enable(cielo3);
+			
+			    cielo4 = game.add.sprite(29485, 0, 'cielo4');
+	game.physics.arcade.enable(cielo4);
+
+	
+   nuvole = game.add.tileSprite(-50, 0, 1200, 768, 'nuvole');
+    nuvole.fixedToCamera=true;
+			nuvole.visible=true;
+    
+    
+    case3 = game.add.tileSprite(-50, 60, 1200, 768, 'case3');
+    case3.fixedToCamera=true;
+	case3.visible=true;
+			
+	monumenti = game.add.tileSprite(-50, -800, 1200, 768, 'monumenti');
+    monumenti.fixedToCamera=true;
+    
+    case2 = game.add.tileSprite(-50, 20, 1200, 768, 'case2');
+    case2.fixedToCamera=true;
+    case2.visible=true;
+	
+	manica2 = game.add.tileSprite(0, 0, 1024, 768, 'manica2');
+    manica2.fixedToCamera=true;
+    manica2.visible=false;
+	manica2.tilePosition.x=1600;		
+	
+	
+	parigi3 = game.add.tileSprite(0, 0, 1024, 768, 'parigi3');
+    parigi3.fixedToCamera=true;
+    parigi3.visible=false;
+	parigi3.tilePosition.x=2120;		
+					
+			
+	parigi2 = game.add.tileSprite(0, 0, 1024, 768, 'parigi2');
+    parigi2.fixedToCamera=true;
+    parigi2.visible=false;
+	parigi2.tilePosition.x=2500;
+	
+	roma3 = game.add.tileSprite(0, 0, 1024, 768, 'roma3');
+    roma3.fixedToCamera=true;
+    roma3.visible=false;
+	roma3.tilePosition.x=-100;			
+			
+	roma2 = game.add.tileSprite(0, 0, 1024, 768, 'roma2');
+    roma2.fixedToCamera=true;
+    roma2.visible=false;
+	roma2.tilePosition.x=-100;	
+			
+			
+	roma1 = game.add.tileSprite(0, 0, 1024, 768, 'roma1');
+    roma1.fixedToCamera=true;
+    roma1.visible=false;
+	roma1.tilePosition.x=-100;	
+			
+			
+			
+	parigi1 = game.add.tileSprite(0, 0, 1024, 768, 'parigi1');
+    parigi1.fixedToCamera=true;
+    parigi1.visible=false;
+	parigi1.tilePosition.x=4000;		
+			
+	manica1 = game.add.tileSprite(0, 0, 1024, 768, 'manica1');
+    manica1.fixedToCamera=true;
+    manica1.visible=false;
+	manica1.tilePosition.x=1600;
+			
+			
+    case1 = game.add.tileSprite(-50, 20, 1200, 768, 'case1');
+    case1.fixedToCamera=true;
+    case1.visible=true;
+	
+	//CARTELLO MINE
+	cartello_mine= game.add.sprite(1510,320,'cartelloMine');
+	
+	//TASTI TUTORIAL
+	dx_sx= game.add.sprite(150,670,'dx-sx');
+	
+	spazio= game.add.sprite(270,670,'spazio');
+	
+	evita= game.add.sprite(2420,590,'evita');
+			
+	su_giu= game.add.sprite(10920,550,'su-giu');
+			
+	checkpointManica= game.add.sprite(10500,725,'manica');
+	game.physics.arcade.enable(checkpointManica);
+	
+	checkpointParigi= game.add.sprite(21000,725,'parigi');
+	game.physics.arcade.enable(checkpointParigi);
+	
+	checkpointRoma= game.add.sprite(31050,725,'roma');
+	game.physics.arcade.enable(checkpointRoma);	
+		
+	//CASA FINALE
+	casa= game.add.sprite(44500, 315, 'casa');
+	game.physics.arcade.enable(casa);
+	casa.animations.add('apri', [0,1,2,3],10, false);
+	casa.body.setSize(80,410,320,0);
+	casa.body.immovable=true;
+		
+			
+	raccogliCubi= game.add.sprite(9500,100, 'raccogliCubi');
+	game.physics.arcade.enable(raccogliCubi);
+	raccogliCubi.scale.x=0.8;
+	raccogliCubi.scale.y=0.8;
+	raccogliCubi.visible=false
+			
+	//GIOCATORE
+    player = game.add.sprite(50, 100, 'dude');
+	player.alpha=0;
+
+    cade = game.add.sprite(40, -50, 'cade');
+    game.physics.arcade.enable(cade);
+    cade.body.gravity.y = 700;
+    cade.animations.add('walk',[0,1,2,3,4,5], 10, true);
+	cade.animations.add('rialza',[6,6,6,6,6,7,8,9,10,11,12,13,14,15,16,17,18,18,18,18,18,18,19], 10, false);  
+
+    game.physics.arcade.enable(player);
+	player.body.gravity.y = 700;
+    player.body.collideWorldBounds=false;
+    
+    player.animations.add('left', [0, 1, 2, 3,4,5,6,7,], 10, true);
+    player.animations.add('turn', [8], 20, true);
+    player.animations.add('right', [9,10,11,12,13,14,15,16], 10, true);
+	player.body.setSize(27.5,69,11.5,0);
+	
+	ombrello = game.add.sprite(10870, 637, 'mary');
+    game.physics.arcade.enable(ombrello);
+	ombrello.body.collideWorldBounds=true;
+    ombrello.animations.add('vola', [0,1,2,3,4], 10, false);
+	ombrello.animations.add('vola_2', [4,3,2,1,0], 10, false);
+
+	
+	//bound sinistra
+	limite=game.add.sprite(0,0, 'limite')
+	game.physics.arcade.enable(limite);
+	limite.body.immovable=true;
+			
+			
+	//PIATTFORME
+    platforms = game.add.physicsGroup();
+
+	//LONDRA		
+    platforms.create(0, 725, 'platform');	
+    platforms.create(200, 725, 'platform');
+    platforms.create(550, 725, 'platform');
+	platforms.create(2260, 725, 'platform');
+	platforms.create(2460, 725, 'platform');
+	platforms.create(2660, 725, 'platform');
+	platforms.create(2860, 725, 'platform');
+	platforms.create(3570, 725, 'platform');
+	platforms.create(3570, 725, 'platform');
+	platforms.create(5210, 725, 'platform');
+	platforms.create(5410, 725, 'platform');
+	platforms.create(5610, 725, 'platform');
+	platforms.create(6100, 725, 'platform');
+	platforms.create(6300, 725, 'platform');
+	platforms.create(6500, 725, 'platform');
+	platforms.create(6700, 725, 'platform');
+	platforms.create(6900, 725, 'platform');
+	platforms.create(7285, 725, 'platform');
+	platforms.create(7485, 725, 'platform');
+	platforms.create(7685, 725, 'platform');
+	platforms.create(7885, 725, 'platform');
+	platforms.create(8085, 725, 'platform');
+	platforms.create(8285, 725, 'platform');
+	platforms.create(8485, 725, 'platform');
+	platforms.create(8685, 725, 'platform');
+	platforms.create(9615, 725, 'platform');
+	platforms.create(9815, 725, 'platform');
+	platforms.create(10015, 725, 'platform');
+	platforms.create(10215, 725, 'platformSfumata');
+	
+	platforms.create(10615, 725.4, 'platformSabbia');
+	platforms.create(10815, 725.4, 'platformSabbia');
+	platforms.create(840, 635, 'platformVolante');
+    platforms.create(1060, 545, 'platformVolante');
+	platforms.create(1280, 455, 'platformVolante');
+    platforms.create(1500, 365, 'platformVolante');
+	platforms.create(1630, 365, 'platformVolante');
+	platforms.create(3640, 320, 'platformVolante');
+	platforms.create(4030, 270, 'platformVolante');
+	platforms.create(4160, 270, 'platformVolante');
+	platforms.create(4290, 270, 'platformVolante');
+	platforms.create(4420, 270, 'platformVolante');	
+    platforms.create(4650, 545, 'platformVolante');
+    platforms.create(4870, 635, 'platformVolante');
+	platforms.create(8720, 240, 'platformVolante');
+	platforms.create(8850, 240, 'platformVolante');
+	platforms.create(9380, 270, 'platformVolante');
+	platforms.create(9510, 270, 'platformVolante');
+	platforms.create(9640, 270, 'platformVolante');
+	platforms.create(3210, 725, 'platformToxic');
+    platforms.create(3390, 725, 'platformToxic');
+	platforms.create(2042, 600, 'platformPiccolina');
+	platforms.create(2071, 600, 'platformPiccolina');
+	platforms.create(2100, 600, 'platformPiccolina');
+	//platforms.create(5271, 625, 'platformPiccolina');
+    //platforms.create(5300, 625, 'platformPiccolina');
+	platforms.create(5900, 650, 'platformPiccolina');
+	platforms.create(8991, 320, 'platformPiccolina');
+	platforms.create(9020, 320, 'platformPiccolina');
+	platforms.create(9020, 650, 'platformPiccolina');
+	platforms.create(9220, 670, 'platformPiccolina');
+	platforms.create(9145, 410, 'platformPiccolina');
+	platforms.create(9220, 230, 'platformPiccolina');
+	platforms.create(9260, 500, 'platformPiccolina');
+	platforms.create(9400, 595, 'platformPiccolina');
+	platforms.create(9429, 595, 'platformPiccolina');
+	platforms.create(9545, 650, 'platformPiccolina');
+			
+	//PARIGI
+	platforms.create(20909, 723, 'platformMattoni');
+	platforms.create(21108, 723, 'platformMattoni');
+	platforms.create(21307, 723, 'platformMattoni');
+	platforms.create(21656, 723, 'platformMattoni');
+	platforms.create(21865, 630, 'platformMattoni');
+	platforms.create(22064, 630, 'platformMattoni');
+	platforms.create(22263, 630, 'platformMattoni');
+	platforms.create(21965, 499, 'platformMattoni');
+	platforms.create(22164, 499, 'platformMattoni');
+	platforms.create(22065, 368, 'platformMattoni');
+	platforms.create(22472, 723, 'platformMattoni');
+	platforms.create(22681, 630, 'platformMattoni');		
+	platforms.create(22890, 537, 'platformMattoni');	
+	platforms.create(23089, 537, 'platformMattoni');
+	platforms.create(23438, 723, 'platformMattoni');
+	platforms.create(24051, 340, 'platformPiccola');
+	platforms.create(24051, 230, 'platformPiccola');
+	platforms.create(23800, 200, 'platformDritta');
+	platforms.create(23800, 245, 'platformVerticale');
+	platforms.create(23800, 358, 'platformCapovolta');
+	platforms.create(23637, 723, 'platformMattoni');
+	platforms.create(23836, 723, 'platformMattoni');
+	platforms.create(24035, 723, 'platformMattoni');
+	platforms.create(24234, 723, 'platformMattoni');
+	platforms.create(24433, 723, 'platformMattoni');
+	platforms.create(24632, 723, 'platformMattoni');
+	platforms.create(24831, 723, 'platformMattoni');
+	platforms.create(25030, 723, 'platformMattoni');
+	platforms.create(25130, 590, 'platformMattoni');
+	platforms.create(25229, 723, 'platformMattoni');
+	platforms.create(25428, 723, 'platformMattoni');
+	platforms.create(25627, 723, 'platformMattoni');
+	platforms.create(25826, 723, 'platformMattoni');
+	platforms.create(26025, 723, 'platformMattoni');
+	platforms.create(26172, 610, 'platformVerticale');
+	platforms.create(26172, 497, 'platformVerticale');
+	platforms.create(26172, 452, 'platformMattoni');
+	platforms.create(26371, 452, 'platformMattoni');
+	platforms.create(26570, 452, 'platformMattoni');
+	platforms.create(26466, 723, 'platformDritta');
+	platforms.create(26769, 723, 'platformMattoni');
+	platforms.create(26968, 723, 'platformDritta');
+	platforms.create(26969, 452, 'platformMattoni');
+	platforms.create(27168, 452, 'platformMattoni');
+	platforms.create(27367, 452, 'platformMattoni');
+	platforms.create(27514, 610, 'platformVerticale');
+	platforms.create(27514, 497, 'platformVerticale');
+	platforms.create(27514, 723, 'platformMattoni');
+	platforms.create(27713, 723, 'platformMattoni');
+	platforms.create(27912, 723, 'platformMattoni');
+	platforms.create(28111, 723, 'platformMattoni');
+	platforms.create(28310, 643, 'platformMattoni');
+	platforms.create(28509, 563, 'platformMattoni');
+	platforms.create(28710, 483, 'platformMattoni');
+	platforms.create(28910, 403, 'platformMattoni');
+			
+	//ROMA
+	platforms.create(30850, 725, 'platformRomaPiccola');
+	platforms.create(30900, 725, 'platformRoma');
+	platforms.create(31000, 725, 'platformRoma');
+	platforms.create(31200, 725, 'platformRoma');
+	platforms.create(31400, 725, 'platformRoma');
+	platforms.create(31600, 725, 'platformRoma');
+	platforms.create(31800, 725, 'platformRoma');
+	platforms.create(32200, 725, 'platformRoma');
+	platforms.create(32400, 725, 'platformRoma');
+	platforms.create(32435, 600, 'platformRomaPiccola');
+	platforms.create(32600, 725, 'platformRoma');
+	platforms.create(32800, 725, 'platformRoma');
+	platforms.create(33000, 725, 'platformRoma');
+	platforms.create(33300, 674, 'platformColonnaBassa');
+	platforms.create(33500, 628, 'platformColonnaAlta');
+	platforms.create(33655, 555, 'platformRoma');
+	platforms.create(33855, 555, 'platformRoma');
+	platforms.create(34055, 555, 'platformRoma');
+	platforms.create(34255, 555, 'platformRoma');
+	platforms.create(34455, 555, 'platformRoma');
+	platforms.create(34655, 555, 'platformRoma');
+	platforms.create(34955, 628, 'platformColonnaAlta');
+	platforms.create(35155, 674, 'platformColonnaBassa');
+	platforms.create(35300, 725, 'platformRoma');
+	platforms.create(35500, 725, 'platformRoma');
+	platforms.create(35700, 725, 'platformRoma');
+	platforms.create(35900, 725, 'platformRoma');
+	platforms.create(36200, 700, 'platformColonnaBassa');
+	platforms.create(36350, 700, 'platformColonnaBassa');
+	platforms.create(36500, 700, 'platformColonnaBassa');
+	platforms.create(36650, 700, 'platformColonnaBassa');
+	platforms.create(36800, 725, 'platformRoma');
+	platforms.create(37000, 643, 'platformRoma');
+	platforms.create(37200, 563, 'platformRoma');
+	platforms.create(37400, 483, 'platformRoma');
+	platforms.create(37600, 403, 'platformRoma');
+	platforms.create(37800, 403, 'platformRoma');
+	platforms.create(38000, 483, 'platformRoma');
+	platforms.create(38200, 563, 'platformRoma');
+	platforms.create(38400, 643, 'platformRoma');
+	platforms.create(38600, 300, 'platformRoma');
+	platforms.create(38600, 725, 'platformRoma');
+	platforms.create(38700, 725, 'platformRoma');
+	platforms.create(38900, 725, 'platformRoma');
+	platforms.create(39100, 725, 'platformRoma');
+	platforms.create(39300, 725, 'platformRoma');
+	platforms.create(39500, 725, 'platformRoma');
+	platforms.create(39700, 725, 'platformRoma');
+	platforms.create(39900, 725, 'platformRoma');
+	platforms.create(40100, 725, 'platformRoma');
+	platforms.create(40300, 725, 'platformRoma');
+	platforms.create(40500, 725, 'platformRoma');
+	platforms.create(40700, 725, 'platformRoma');
+	platforms.create(40900, 725, 'platformRoma');
+	platforms.create(41100, 725, 'platformRoma');
+	platforms.create(41300, 725, 'platformRoma');
+	platforms.create(41500, 725, 'platformRoma');
+	platforms.create(41700, 725, 'platformRoma');
+	platforms.create(41900, 725, 'platformRoma');
+	platforms.create(42100, 725, 'platformRoma');
+	platforms.create(42300, 725, 'platformRoma');
+	platforms.create(42500, 725, 'platformRoma');
+	platforms.create(42700, 725, 'platformRoma');
+	platforms.create(43100, 725, 'platform');
+	platforms.create(43300, 725, 'platform');
+	platforms.create(43500, 725, 'platform');
+	platforms.create(43700, 725, 'platform');
+	platforms.create(43900, 725, 'platform');
+	platforms.create(44100, 725, 'platform');
+	platforms.create(44300, 725, 'platform');
+	platforms.create(44500, 725, 'platform');
+	platforms.create(44700, 725, 'platform');
+	platforms.create(44900, 725, 'platform');
+	
+	
+	
+	platforms.setAll('body.immovable', true);
+	
+	cubo = game.add.physicsGroup();
+			
+
+    cubo.create(3660, 687, 'cubo');
+    cubo.create(3698, 687, 'cubo');
+    cubo.create(3736, 687, 'cubo');
+	cubo.create(3698, 649, 'cubo'); 
+	cubo.create(3736.1, 649, 'cubo');
+	cubo.create(3736.2, 611, 'cubo');
+	cubo.create(5448.1, 687, 'cubo');
+	cubo.create(5448.2, 649, 'cubo');
+	cubo.create(5448.3, 611, 'cubo');
+	cubo.create(5448.4, 573, 'cubo');
+	cubo.create(5410, 611, 'cubo');
+	cubo.create(5410, 649, 'cubo');
+	cubo.create(5410, 687, 'cubo');		
+	cubo.create(6335, 687, 'cubo');
+	cubo.create(5374, 687, 'cubo');
+	cubo.create(5374, 649, 'cubo');			
+	cubo.create(5336, 687, 'cubo');		
+	cubo.create(6847, 687, 'cubo');
+	cubo.create(8720, 687, 'cubo');
+	cubo.create(8720, 649, 'cubo');
+	cubo.create(8758, 687, 'cubo');
+	cubo.create(8758, 649, 'cubo');
+	cubo.create(8796, 687, 'cubo');
+	cubo.create(8796, 649, 'cubo');
+	cubo.create(8834, 687, 'cubo');
+	cubo.create(8834, 649, 'cubo');
+	cubo.create(9600, 232, 'cubo');
+	cubo.create(9600, 194, 'cubo');
+	cubo.create(10225, 687, 'cubo');
+	cubo.create(10263, 687, 'cubo');
+	cubo.create(10263, 649, 'cubo');
+	cubo.create(10301, 687, 'cubo');
+	cubo.create(10301, 649, 'cubo');
+	cubo.create(10301, 611, 'cubo');
+	cubo.create(10339, 687, 'cubo');
+	cubo.create(10339, 649, 'cubo');
+	cubo.create(10339, 611, 'cubo');
+	cubo.create(10339, 573, 'cubo');
+	cubo.create(10377, 687, 'cubo');
+	cubo.create(10377.1, 649, 'cubo');
+	cubo.create(10377.2, 611, 'cubo');
+	cubo.create(10377.3, 573, 'cubo');
+	cubo.create(10377.4, 535, 'cubo');
+	cubo.create(10977, 687, 'cubo');
+	cubo.create(10977, 649, 'cubo');
+	cubo.create(10977, 611, 'cubo');
+	cubo.create(10977, 573, 'cubo');
+	cubo.create(10977, 535, 'cubo');
+	//cubo.create(21420, 687, 'cubo');
+	cubo.create(21895, 592, 'cubo');
+	cubo.create(21985, 461, 'cubo');
+	cubo.create(22394, 592, 'cubo');
+	cubo.create(23448, 687, 'cubo');
+	cubo.create(23448, 649, 'cubo');
+	cubo.create(23448, 611, 'cubo');
+	cubo.create(23486, 687, 'cubo');
+	cubo.create(23486, 649, 'cubo');
+	cubo.create(23524, 687, 'cubo');
+	cubo.create(23524, 649, 'cubo');
+	cubo.create(23562, 687, 'cubo');
+	cubo.create(23600, 687, 'cubo');
+	cubo.create(24980, 687, 'cubo');
+	cubo.create(24980, 649, 'cubo');
+	cubo.create(25440, 687, 'cubo');
+	cubo.create(25440, 649, 'cubo');
+	cubo.create(25906, 685, 'cubo');
+	cubo.create(25944, 685, 'cubo');
+	cubo.create(25944, 647, 'cubo');
+	cubo.create(25982, 685, 'cubo');
+	cubo.create(25982, 647, 'cubo');
+	cubo.create(25982, 609, 'cubo');
+	cubo.create(26020, 685, 'cubo');
+	cubo.create(26020, 647, 'cubo');
+	cubo.create(26020, 609, 'cubo');
+	cubo.create(26020, 571, 'cubo');
+	cubo.create(26058, 685, 'cubo');
+	cubo.create(26058, 647, 'cubo');
+	cubo.create(26058, 609, 'cubo');
+	cubo.create(26058, 571, 'cubo');
+	cubo.create(26058, 533, 'cubo');
+	cubo.create(26096, 685, 'cubo');
+	cubo.create(26096, 647, 'cubo');
+	cubo.create(26096, 609, 'cubo');
+	cubo.create(26096, 571, 'cubo');
+	cubo.create(26096, 533, 'cubo');
+	cubo.create(26096, 496, 'cubo');
+	cubo.create(26134, 685, 'cubo');
+	cubo.create(26134, 647, 'cubo');
+	cubo.create(26134, 609, 'cubo');
+	cubo.create(26134, 571, 'cubo');
+	cubo.create(26134, 533, 'cubo');
+	cubo.create(26134, 495, 'cubo');
+	cubo.create(26134, 457, 'cubo');
+	cubo.create(27566, 685, 'cubo');
+	cubo.create(27566, 647, 'cubo');
+	cubo.create(27566, 609, 'cubo');
+	cubo.create(27566, 571, 'cubo');
+	cubo.create(27566, 533, 'cubo');
+	cubo.create(27566, 495, 'cubo');
+	cubo.create(27566, 457, 'cubo');
+	cubo.create(27604, 685, 'cubo');
+	cubo.create(27604, 647, 'cubo');
+	cubo.create(27604, 609, 'cubo');
+	cubo.create(27604, 571, 'cubo');
+	cubo.create(27604, 533, 'cubo');
+	cubo.create(27604, 496, 'cubo');
+	cubo.create(27642, 685, 'cubo');
+	cubo.create(27642, 647, 'cubo');
+	cubo.create(27642, 609, 'cubo');
+	cubo.create(27642, 571, 'cubo');
+	cubo.create(27642, 533, 'cubo');
+	cubo.create(27680, 685, 'cubo');
+	cubo.create(27680, 647, 'cubo');
+	cubo.create(27680, 609, 'cubo');
+	cubo.create(27680, 571, 'cubo');
+	cubo.create(27718, 685, 'cubo');
+	cubo.create(27718, 647, 'cubo');
+	cubo.create(27718, 609, 'cubo');
+	cubo.create(27756, 685, 'cubo');
+	cubo.create(27756, 647, 'cubo');
+	cubo.create(27794, 685, 'cubo');
+	cubo.create(39100, 687, 'cubo');
+	cubo.create(39138, 687, 'cubo');
+	cubo.create(39138, 649, 'cubo');
+	cubo.create(39176, 687, 'cubo');
+	cubo.create(39176, 649, 'cubo');
+	cubo.create(39176, 611, 'cubo');
+	cubo.create(39214, 687, 'cubo');
+	cubo.create(39214, 649, 'cubo');
+	cubo.create(39252, 687, 'cubo');
+	cubo.create(42500, 687, 'cubo');
+	cubo.create(42538, 687, 'cubo');
+	cubo.create(42538, 649, 'cubo');
+	cubo.create(42576, 687, 'cubo');
+	cubo.create(42576, 649, 'cubo');
+	cubo.create(42576, 611, 'cubo');
+	cubo.create(42614, 687, 'cubo');
+	cubo.create(42614, 649, 'cubo');
+	cubo.create(42652, 687, 'cubo');
+	cubo.create(34680, 517, 'cubo');
+	cubo.create(34768, 517, 'cubo');
+	cubo.create(37850, 365, 'cubo');
+	cubo.create(37888, 365, 'cubo');
+	cubo.create(37888, 327, 'cubo');
+	//cubo.create(20910, 687, 'cubo');
+	//cubo.create(20910.1, 649, 'cubo');
+	//cubo.create(20910.2, 611, 'cubo');
+	//cubo.create(20910.3, 573, 'cubo');
+	//cubo.create(20910.4, 535, 'cubo');
+	cubo.create(30850, 687, 'cubo');
+	cubo.create(30850.1, 649, 'cubo');
+	cubo.create(30850.2, 611, 'cubo');
+	cubo.create(30850.3, 573, 'cubo');
+	cubo.create(30850.4, 535, 'cubo')
+	
+	
+	
+	
+	cubo.setAll('scale.x', 0.4);
+    cubo.setAll('scale.y', 0.4);
+	cubo.setAll('body.immovable', true);
+	/*cubo.forEach(
+ function(cubo){ 
+    cubo.body.setSize(38, 38, 0, 0); 
+ });*/
+	
+	nuvole_mobili = game.add.sprite(3835, 350, 'nuvole_mobili');
+    game.physics.arcade.enable(nuvole_mobili);
+    nuvole_mobili.body.immovable=true;
+    var nuvole_ve=nuvole_mobili.body.velocity.y= 100;
+			
+	nuvole_mobili_2 = game.add.sprite(23677, 350, 'nuvole_mobili');
+    game.physics.arcade.enable(nuvole_mobili_2);
+    nuvole_mobili_2.body.immovable=true;
+	nuvole_mobili_2.body.velocity.y= 100;
+		
+	nuvole_mobili_3 = game.add.sprite(26810, 350, 'nuvole_mobili');
+    game.physics.arcade.enable(nuvole_mobili_3);
+    nuvole_mobili_3.body.immovable=true;
+	nuvole_mobili_3.body.velocity.y= 100;
+	nuvole_mobili_3.scale.x=1.3;
+	nuvole_mobili_3.scale.y=1.3;
+			
+	nuvole_mobili_4 = game.add.sprite(29176, 403, 'nuvole_mobili');
+    game.physics.arcade.enable(nuvole_mobili_4);
+    nuvole_mobili_4.body.immovable=true;
+	nuvole_mobili_4.body.velocity.x= 100;
+			
+	nuvole_mobili_5 = game.add.sprite(30676, 403, 'nuvole_mobili');
+    game.physics.arcade.enable(nuvole_mobili_5);
+    nuvole_mobili_5.body.immovable=true;
+	nuvole_mobili_5.body.velocity.x= -100;
+			
+	nuvole_mobili_7 = game.add.sprite(38000, 300, 'nuvole_mobili');
+    game.physics.arcade.enable(nuvole_mobili_7);
+    nuvole_mobili_7.body.immovable=true;
+	nuvole_mobili_7.body.velocity.x=100;
+			
+	//OGGETTI DA RACCOGLIERE
+	oggetto_orsetto = game.add.sprite(5580,688,'orsetto');
+	game.physics.arcade.enable(oggetto_orsetto);
+	oggetto_orsetto.scale.x=0.04;
+	oggetto_orsetto.scale.y=0.04;
+		
+			
+	//648.5
+	oggetto_ombrello= game.add.sprite(10925,648.5,'ombrello');
+	game.physics.arcade.enable(oggetto_ombrello);
+	oggetto_ombrello.scale.x=0.9;
+	oggetto_ombrello.scale.y=0.9;
+			
+	
+	oggetto_lampada= game.add.sprite(22274,464,'lampada');
+	game.physics.arcade.enable(oggetto_lampada);
+			
+	oggetto_specchio= game.add.sprite(8940,195,'specchio');
+	game.physics.arcade.enable(oggetto_specchio);
+	oggetto_specchio.scale.x=0.8;
+	oggetto_specchio.scale.y=0.8;
+			
+	oggetto_pianta= game.add.sprite(27220,668,'pianta');
+	game.physics.arcade.enable(oggetto_pianta);
+	oggetto_pianta.scale.x=1.2;
+	oggetto_pianta.scale.y=1.2;
+	
+	oggetto_sciroppo= game.add.sprite(34732,518,'sciroppo');
+	game.physics.arcade.enable(oggetto_sciroppo);
+			
+	oggetto_aquilone= game.add.sprite(37410,440,'aquilone');
+	game.physics.arcade.enable(oggetto_aquilone);
+	oggetto_aquilone.scale.x=0.8;
+	oggetto_aquilone.scale.y=0.8;
+			
+	oggetto_appendiabiti= game.add.sprite(40900,628,'appendiabiti');
+	game.physics.arcade.enable(oggetto_appendiabiti);
+	oggetto_appendiabiti.scale.x=1.3;
+	oggetto_appendiabiti.scale.y=1.3;
+			
+	//ARMI:
+			
+	//MINE
+	minaLampo= game.add.physicsGroup();
+			
+	var minaLampodata = [{ x:1565, y:348 }, { x:1592, y:348 }, { x:1619, y:348 }, {x:1646,y:348}, {x:1673,y:348}, {x:3689,y:304}, {x:3716,y:304}, {x:3743,y:304}, {x:5250,y:708}, {x:5486,y:708}, {x:5513,y:708}, {x:8693,y:708}, {x:8666,y:708}, {x:8639,y:708}, {x:8612,y:708}, {x:8585,y:708}, {x:22040,y:482}, {x:22350,y:613}];
+			
+	for (var i = 0; i < minaLampodata.length; i++) {
+	          minaLampoAnimation= minaLampo.create(minaLampodata[i].x, minaLampodata[i].y, 'minaLampo')
+	          minaLampoAnimation.animations.add('minaLampo',[0,1],2,true);
+	          minaLampoAnimation.animations.play('minaLampo');
+	          minaLampoAnimation.body.setSize(27,6,0,11)
+	          minaLampo.setAll('body.immovable', true);
+		      
+	}
+			
+			
+	esplosione = game.add.group();
+
+    for (var i = 0; i < 20; i++)
+    {
+        var explosionAnimation = esplosione.create(0, 0, 'esplosione', [0,1,2,3,4,5,6,7,8,9,10,11,12,13], false);
+        explosionAnimation.anchor.setTo(0.3, 0.9);
+        explosionAnimation.animations.add('kaboom');
+    }
+			
+	//FUMO USCENTE DAL TERRENO		
+	esplodione=game.add.physicsGroup();
+	var esplodioneData	= [{ x:3060, y:560 }, { x:3245, y:560 }, { x:3425, y:560 }, {x:7130,y:560}, {x:21511,y:560}, {x:33350, y:560}, {x:35010, y:560}];
+	for (var i = 0; i < esplodioneData.length; i++) {
+	          esplodioneAnimation= esplodione.create(esplodioneData[i].x, esplodioneData[i].y, 'ciao')
+	          esplodioneAnimation.animations.add('boom',[0,1,2,3,4,5,6,7,8,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9],12,true);
+	          esplodioneAnimation.animations.play('boom');
+	          esplodione.setAll('body.immovable', true);
+		      esplodioneAnimation.body.setSize(65,207,40,0);
+	}
+	
+	aerei_volano_manica();
+			
+	//SOLDATI
+    soldatoGroup= game.add.physicsGroup();
+	var soldatoData	= [{ x:2560, y:650 }, { x:2760, y:650 }, { x:4890, y:450 }, { x:8335, y:450 }, { x:8150, y:450 },{ x:7950, y:450 },
+					   { x:7750, y:450 }, { x:9690, y:450 }, { x:6560, y:450 }, { x:22150, y:150 },{ x:22140, y:399 }, { x:26645, y:500 }, { x:26899, y:500 },
+					   { x:37300, y:400 }, { x:37560, y:200 }, { x:25070, y:600 }, { x:25270, y:600 }];
+			
+	for (var i = 0; i < soldatoData.length; i++) {
+         soldato = soldatoGroup.create(soldatoData[i].x, soldatoData[i].y, 'soldato');
+		 soldato.body.gravity.y=300;
+		 soldato.animations.add('left', [0, 1, 2, 3,4,5,6,7], 10, true);
+         soldato.animations.add('right', [8,9,10,11,12,13,14,15], 10, true);
+         soldato.body.velocity.x=50;
+		 soldato.body.setSize(17,65,20,10);
+		 
+    }
+    
+	// SOLDATI CHE SPARANO
+    soldatoSparaGroup= game.add.physicsGroup();	
+	var soldatoSparaData= [{ x:24150, y:550 }, { x:23140, y:450 }, { x:25190, y:320 }, { x:27100, y:320 }, { x:36800, y:650 }, { x:38590, y:150 },
+						   { x:32750, y:150 }];
+			
+	for (var i = 0; i < soldatoSparaData.length; i++) {
+         soldatoSpara = soldatoSparaGroup.create(soldatoSparaData[i].x, soldatoSparaData[i].y, 'soldatoSpara');
+         soldatoSpara.body.gravity.y=300;
+		 soldatoSpara.scale.x=0.5;
+		 soldatoSpara.scale.y=0.5;
+	     soldatoSpara.anchor.x=0.0;
+         soldatoSpara.anchor.y=0.35;
+	     soldatoSpara.animations.add('left_Spara', [2,1,0,0,1,2], 3, true);
+		 soldatoSpara.body.setSize(30,144,70,0)
+	}
+		
+	    enemyBullets = game.add.physicsGroup();
+        enemyBullets = game.add.weapon(4, 'proiettileOro');
+        enemyBullets.fireRate=2000
+        enemyBullets.bulletSpeed = 400;
+        enemyBullets.bulletKillType = Phaser.Weapon.KILL_CAMERA_BOUNDS;
+	
+			
+	// AEREI CHE SPARANO
+	aereoBombeGroup = game.add.physicsGroup();	
+	var aereoBombeData= [{ x:41500, y:100 }, { x:41120, y:100 }, { x:39300, y:100 }, { x:34000, y:100 }];
+			
+	for (var i = 0; i < aereoBombeData.length; i++) {
+        aereoBombe = aereoBombeGroup.create(aereoBombeData[i].x, aereoBombeData[i].y, 'aereoBombe');
+		
+		aereoBombe.anchor.x=0.4;
+		aereoBombe.anchor.y=0.6;
+		aereoBombe.animations.add('left_vola',[0,1,2,3,4,5,6], 200, true )
+		aereoBombe.animations.add('right_vola',[7,8,9,10,11,12,13], 200, true )
+	    aereoBombe.body.velocity.x=300;
+	    aereoBombe.body.gravity.y=100;
+		
+	}
+			
+	    missile = game.add.physicsGroup();
+        missile = game.add.weapon(5, 'missile');
+		missile.fireRate=400
+		missile.bulletSpeed=400;
+		missile.setBulletBodyOffset(38, 9, -12, 6);
+        missile.bulletKillType = Phaser.Weapon.KILL_CAMERA_BOUNDS;
+		
+			
+		esplosioneAereo = game.add.group();
+
+    for (var i = 0; i < 20; i++)
+    {
+        var explosionAereoAnimation = esplosioneAereo.create(0, 0, 'esplosioneBombe', [0,1,2,3,4,5,6,7,8,9,10], false);
+        explosionAereoAnimation.anchor.setTo(0.3, 0.9);
+        explosionAereoAnimation.animations.add('kaboom_aereo');
+    }
+			
+	//SPUNTONI
+	spunte= game.add.physicsGroup();
+	spunte.create(4160,246,'spunte');
+	spunte.create(4226,246,'spunte');
+	spunte.create(4362,246,'spunte');
+	spunte.create(4428,246,'spunte');
+	spunte.create(6373,700,'spunte');
+	spunte.create(6439,700,'spunte');
+	spunte.create(6715,700,'spunte');
+	spunte.create(6781,700,'spunte');
+	spunte.create(9638,245,'spunte');
+	spunte.create(9704,245,'spunte');
+	spunte.create(8850,215,'spunte');
+	spunte.create(8784,215,'spunte');
+	spunte.create(8718,215,'spunte');
+	spunte.create(23900,698,'spunte');
+	spunte.create(26800,698,'spunte');
+	spunte.create(26866,698,'spunte');
+	spunte.create(32250,700,'spunte');
+	spunte.create(32316,700,'spunte');
+	spunte.create(33084,700,'spunte');
+	spunte.create(33018,700,'spunte');
+	spunte.create(37534,458,'spunte');
+	spunte.create(37468,458,'spunte');
+	
+	spunte.setAll('body.immovable', true);
+	
+	// CUBI DA TROVARE		
+    cubiM=game.add.sprite(9565,200, 'cubiM');
+	game.physics.arcade.enable(cubiM);
+	cubiM.body.gravity.y=50;
+	cubiM.scale.x=0.6;
+	cubiM.scale.y=0.6;
+	cubiM.animations.add('ruota_M', [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14], 10, true);
+	cubiM.animations.play('ruota_M');
+			
+	creaCubiA();
+			
+	cubiR=game.add.sprite(23900,250, 'cubiR');
+	game.physics.arcade.enable(cubiR);
+	cubiR.body.gravity.y=50;
+	cubiR.scale.x=0.6;
+	cubiR.scale.y=0.6;
+	cubiR.animations.add('ruota_R', [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14], 10, true);
+	cubiR.animations.play('ruota_R');
+			
+	cubiY=game.add.sprite(38750,200, 'cubiY');
+	game.physics.arcade.enable(cubiY);
+	cubiY.body.gravity.y=50;
+	cubiY.scale.x=0.6;
+	cubiY.scale.y=0.6;
+	cubiY.animations.add('ruota_Y', [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14], 10, true);
+	cubiY.animations.play('ruota_Y');
+			
+			
+    // PILLOLE PER CURARSI
+    pillole= game.add.physicsGroup();
+    
+    pillole.create(1110, 522, 'pillola');
+	pillole.create(3650, 297, 'pillola');
+	pillole.create(10670, 701, 'pillola');
+	pillole.create(22250, 606, 'pillola');
+	pillole.create(26740, 699, 'pillola');
+	pillole.create(36220, 676, 'pillola');
+	pillole.create(40245, 700.5, 'pillola');
+	pillole.create(28400, 619, 'pillola');
+	pillole.setAll('body.immovable', true);
+    pillole.setAll('scale.x', 0.6);
+    pillole.setAll('scale.y', 0.6);
+    
+	trasparente= game.add.physicsGroup();
+	trasparente.create(41500,150, 'trasparente');
+	trasparente.create(40400,150, 'trasparente');
+	trasparente.create(39300,150, 'trasparente');
+	trasparente.create(33655,150, 'trasparente');
+	trasparente.setAll('body.immovable', true);
+			
+	//INTERFACCIA
+    interfaccia = game.add.sprite(-0.8,0,'interfaccia');
+	game.physics.arcade.enable(interfaccia);
+	interfaccia.body.setSize(1024,60,0,0)
+    interfaccia.fixedToCamera=true;
+	
+	livesCounter= game.add.sprite(16,20, 'tavolaCuori');
+	livesCounter.fixedToCamera = true;
+		
+	livesIcon = livesCounter.width / maxLives;
+	livesCrop = new Phaser.Rectangle(0, 0, lives * livesIcon, livesCounter.height);
+    livesCounter.crop(livesCrop);
+			
+	cuboM= game.add.sprite(736,17,'cuboM');
+	cuboM.fixedToCamera=true;
+	cuboM.visible=false;
+			
+	cuboA= game.add.sprite(780,17,'cuboA'); 
+	cuboA.fixedToCamera=true;
+	cuboA.visible=false;
+			
+	cuboR = game.add.sprite(823.8,17,'cuboR');
+	cuboR.fixedToCamera=true;
+	cuboR.visible=false;
+			
+	cuboY = game.add.sprite(867.7,17,'cuboY');
+	cuboY.fixedToCamera=true;
+	cuboY.visible=false;
+		
+	//PALLINI
+	pallino_1=game.add.sprite(314,15,'pallino');
+	pallino_1.fixedToCamera=true;		
+	pallino_1.visible=false;
+			
+	pallino_2=game.add.sprite(354,15,'pallino');
+	pallino_2.fixedToCamera=true;		
+	pallino_2.visible=false;		
+	
+	pallino_3=game.add.sprite(394,15,'pallino');
+	pallino_3.fixedToCamera=true;	
+	pallino_3.visible=false;
+			
+	pallino_4=game.add.sprite(434,15,'pallino');
+	pallino_4.fixedToCamera=true;	
+	pallino_4.visible=false;
+			
+	pallino_5=game.add.sprite(474,15,'pallino');
+	pallino_5.fixedToCamera=true;	
+	pallino_5.visible=false;
+			
+	pallino_6=game.add.sprite(514,15,'pallino');
+	pallino_6.fixedToCamera=true;	
+	pallino_6.visible=false;
+			
+	pallino_7=game.add.sprite(554,15,'pallino');
+	pallino_7.fixedToCamera=true;	
+	pallino_7.visible=false;
+			
+	pallino_8=game.add.sprite(596,15,'pallino');
+	pallino_8.fixedToCamera=true;	
+	pallino_8.visible=false;
+			
+	
+	
+	game.input.onDown.add(nopausa, self);		
+	
+			 function nopausa(event){
+				 
+				 if(pictureA.visible==true){pictureA.visible=false; pictureB.visible=false;}
+				 
+        // Only act if paused
+        if(game.paused){
+            
+           
+
+           
+            if(event.x > 410 && event.x < 550 && event.y > 300 && event.y < 355 ){foglioPausa.visible=false;
+			game.paused=false;
+			pausa1.visible=false;
+	pausa2.visible=false;
+	pausa3.visible=false;
+	pausa4.visible=false;}
+			
+			if(event.x > 420 && event.x < 580 && event.y > 355 && event.y < 425 ){if(player.body.x>=10403.60){game.paused=false;  lives-= 3;
+		livesCrop.width = maxLives * livesIcon;
+        livesCounter.updateCrop(); 
+						   pausa1.visible=false;
+						   pausa2.visible=false;
+						   pausa3.visible=false;pausa4.visible=false;} else if(player.body.x<10403.60){window.location.href='gioco.html'}}
+			
+			
+			if(event.x > 430 && event.x < 595 && event.y > 430 && event.y < 490 ){window.location.href='gioco.html'}
+			
+			if(event.x > 460 && event.x < 600 && event.y > 495 && event.y < 550 ){window.location.href='index.html'}
+		
+		
+		
+		
+		
+		
+		}}
+			
+	pausa = game.add.sprite(970,17,'pausa');
+	pausa.fixedToCamera=true;
+	pausa.inputEnabled=true;
+	pausa.events.onInputDown.add(function(){
+		
+		game.paused=true;
+		
+		
+	
+	foglioPausa.visible=true;	
+	pausa1.visible=true;
+	pausa2.visible=true;
+	pausa3.visible=true;
+	pausa4.visible=true;	
+	
+	
+	});
+     
+	
+			
+	
+			
+	game_over= game.add.sprite(0,0,'game_over'); 
+	game_over.fixedToCamera=true;
+	game_over.visible=false;
+    
+	check= game.add.sprite(870, 60, 'check');
+	game.physics.arcade.enable(check);
+	check.fixedToCamera=true;
+	check.inputEnabled = true;
+	check.visible=false;
+	check.events.onInputDown.add(overvia)
+			
+	check1= game.add.sprite(870, 60, 'check');
+	game.physics.arcade.enable(check1);
+	check1.fixedToCamera=true;
+	check1.inputEnabled = true;
+	check1.visible=false;
+	check1.events.onInputDown.add(ricarica)		
+			
+			
+	copertina= game.add.sprite(870, 300, 'copertina');
+	game.physics.arcade.enable(copertina);
+	copertina.fixedToCamera=true;
+	copertina.visible=false;
+	copertina.inputEnabled = true;
+	copertina.events.onInputDown.add(index)
+			
+    dacapo= game.add.sprite(730, 180, 'dacapo');
+	game.physics.arcade.enable(dacapo);
+	dacapo.fixedToCamera=true;
+	dacapo.visible=false;
+	dacapo.inputEnabled = true;
+	dacapo.events.onInputDown.add(ricarica)
+		
+	foglioPausa=game.add.sprite(0, 0, 'foglioPausa');
+	foglioPausa.fixedToCamera=true;
+	foglioPausa.visible=false;
+			
+	pausa1= game.add.sprite(410,290, 'pausa1');
+	game.physics.arcade.enable(pausa1);
+	pausa1.fixedToCamera=true;
+	pausa1.visible=false;
+	pausa1.inputEnabled = true;
+	pausa1.events.onInputDown.add(unpause);
+			
+	pausa2= game.add.sprite(425,355, 'pausa2');
+	game.physics.arcade.enable(pausa2);
+	pausa2.fixedToCamera=true;
+	pausa2.visible=false;
+	pausa2.inputEnabled = true;
+	pausa2.events.onInputDown.add(checkpausa);
+	
+	pausa3= game.add.sprite(440,425, 'pausa3');
+	game.physics.arcade.enable(pausa3);
+	pausa3.fixedToCamera=true;
+	pausa3.visible=false;
+	pausa3.inputEnabled = true;
+	pausa3.events.onInputDown.add(ricarica);
+			
+	pausa4=game.add.sprite(455,490, 'pausa4');
+	game.physics.arcade.enable(pausa4);
+	pausa4.fixedToCamera=true;
+	pausa4.visible=false;
+	pausa4.inputEnabled = true;
+	pausa4.events.onInputDown.add(index);
+			
+	finaletop= game.add.sprite(0,0,'finaletop'); 
+	finaletop.fixedToCamera=true;
+	finaletop.visible=false;
+			
+	finale= game.add.sprite(0,0,'finale'); 
+	finale.fixedToCamera=true;
+	finale.visible=false;		
+			
+	fine= game.add.sprite(80,360,'fine'); 
+	fine.fixedToCamera=true;
+	fine.visible=false;
+	game.physics.arcade.enable(fine);
+	fine.inputEnabled = true;
+	fine.events.onInputDown.add(index);
+	
+	extra= game.add.sprite(0,612,'extra'); 
+	extra.fixedToCamera=true;
+	extra.visible=false;	
+	game.physics.arcade.enable(extra);
+	extra.inputEnabled = true;
+	extra.events.onInputDown.add(extra1);
+			
+			
+	pictureA = game.add.sprite(0,0, 'picture1');
+    pictureA.fixedToCamera=true;
+    pictureA.visible=false;
+
+   pictureB = game.add.sprite(0,0, 'picture2');
+    pictureB.fixedToCamera=true;
+    pictureB.visible=false;
+    pictureB.alpha = 0;	
+			
+			
+			
+			timer = game.time.create(false);
+
+    
+    timer.add(3000, fadePictures, this);
+
+    
+		
+    game.camera.follow(player);
+    cursors = game.input.keyboard.createCursorKeys();
+    jumpButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+ } //FINE CREATE
+
+		
+//FUNZIONI:
+		
+function extra1 (){ pictureA.visible=true; timer.start(); pictureB.visible=true;}
+		
+		
+		function fadePictures() {
+
+
+    var tween;
+
+    if (pictureA.alpha === 1)
+    {
+        tween = game.add.tween(pictureA).to( { alpha: 0 }, 2000, Phaser.Easing.Linear.None, true);
+        game.add.tween(pictureB).to( { alpha: 1 }, 2000, Phaser.Easing.Linear.None, true);
+    }
+    else
+    {
+        game.add.tween(pictureA).to( { alpha: 1 }, 2000, Phaser.Easing.Linear.None, true);
+        tween = game.add.tween(pictureB).to( { alpha: 0 }, 2000, Phaser.Easing.Linear.None, true);
+    }
+
+   
+    tween.onComplete.add(changePicture, this);
+
+}
+
+function changePicture() {
+
+    if (pictureA.alpha === 0)
+    {
+        pictureA.loadTexture('picture' + current);
+    }
+    else
+    {
+        pictureB.loadTexture('picture' + current);
+    }
+
+    current++;
+
+    if (current > 8)
+    {
+        current = 1;
+    }
+
+    
+    timer.add(3000, fadePictures, this);
+
+}
+		
+    //FUNZIONE PER CURARSI
+    function curati (player, pillole) {
+       pillole.kill();
+		if (lives<maxLives && lives>0) {lives+= 1;
+		livesCrop.width = lives * livesIcon;
+        livesCounter.updateCrop();}
+
+}
+	function variabilirandom()	{value1 = game.rnd.integerInRange(50, 700);
+value2 = game.rnd.integerInRange(10, 700);
+value3 = game.rnd.integerInRange(10, 700);
+value4 = game.rnd.integerInRange(10, 700);
+value5 = game.rnd.integerInRange(10, 700);
+value6 = game.rnd.integerInRange(10, 700);
+value7 = game.rnd.integerInRange(10, 700);
+value8 = game.rnd.integerInRange(10, 700);
+value9 = game.rnd.integerInRange(10, 700);
+value10 = game.rnd.integerInRange(10, 700);
+value11 = game.rnd.integerInRange(10, 700);
+value12 = game.rnd.integerInRange(10, 700);
+value13 = game.rnd.integerInRange(10, 700);
+value14 = game.rnd.integerInRange(10, 700);
+value15 = game.rnd.integerInRange(10, 700);
+value16 = game.rnd.integerInRange(10, 700);
+value17 = game.rnd.integerInRange(10, 700);
+value18 = game.rnd.integerInRange(10, 700);
+value19 = game.rnd.integerInRange(10, 700);
+value20 = game.rnd.integerInRange(10, 700);
+value21 = game.rnd.integerInRange(150, 600);							
+								}
+			
+	//FUNZIONE PER CREARE AEREI MANICA
+	function aerei_volano_manica() { variabilirandom();
+		aereoGroup = game.add.physicsGroup();	
+	var aereoGroupData= [{ x:14500, y:value1 }, { x:15500, y:value2 }, { x:16500, y:value3 }, { x:17500, y:value4 }, 
+						{ x:18500, y:value5 },{ x:19500, y:value6 },
+						 { x:20500, y:value7 },{ x:21500, y:value8 },  { x:22500, y:value9 },
+						{ x:23500, y:value10 }, { x:24500, y:value11 },
+						 { x:25500, y:value12 }, { x:26500, y:value13 },  { x:27500, y:value14 },
+						{ x:28500, y:value15 },{ x:29500, y:value16 }, 
+						 { x:30500, y:value17 },  { x:31500, y:value18 },  { x:32500, y:value19 },
+						 ];
+			
+	for (var i = 0; i < aereoGroupData.length; i++) {
+        aereoAnimation = aereoGroup.create(aereoGroupData[i].x, aereoGroupData[i].y, 'aereo');
+		aereoAnimation.animations.add('left_manica',[0,1,2,3,4,5,6], 200, true );
+		aereoAnimation.body.setSize(169.66,45,10,20);
+		}
+	}
+		
+	function creaCubiA(){	
+	variabilirandom();
+    cubiA=game.add.sprite(20500, value21, 'cubiA');
+	game.physics.arcade.enable(cubiA);
+	cubiA.scale.x=0.6;
+	cubiA.scale.y=0.6;
+	cubiA.animations.add('ruota_A', [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14], 10, true);
+	cubiA.animations.play('ruota_A');
+			}
+	
+     //FUNZIONE ESPLOSIONE MINE
+     function esplodi (player, minaLampo) {
+	
+	 minaLampo.kill();
+	 var explosionAnimation = esplosione.getFirstExists(false);
+        explosionAnimation.reset(minaLampo.x, minaLampo.y);
+        explosionAnimation.play('kaboom', 20, false, true);
+	    immune=true;
+	    player.alpha=0.5;
+	lives-= 1;
+		livesCrop.width = lives * livesIcon;
+        livesCounter.updateCrop();
+	  if (game_over.visible==false){game.camera.flash(0xff0000, 500);}
+	 game.time.events.add(2000, function player_immune(){immune= false; player.alpha=1;});
+	}
+		
+    //FUNZIONE SOLDATO
+	function scontro_soldato(player, soldato){ 
+	lives-= 1;
+		livesCrop.width = lives * livesIcon;
+        livesCounter.updateCrop();
+    immune=true;
+	player.alpha=0.5;
+	game.time.events.add(2000, function player_immune(){immune= false; player.alpha=1;});
+	if (game_over.visible==false){game.camera.flash(0xff0000, 500);}																					
+    }
+		
+	   //FUNZIONE SPUNTONI
+       function scontro_spuntoni (player, spunte){ 
+		immune=true;
+	    player.alpha=0.5;   
+		lives-= 1;
+		livesCrop.width = lives * livesIcon;
+        livesCounter.updateCrop();
+		  if (game_over.visible==false){game.camera.flash(0xff0000, 500);}
+		  game.time.events.add(2000, function player_immune(){immune= false; player.alpha=1;});
+	   }
+		
+		//scompare game over
+		function overvia(){game_over.visible=false;
+						   check.visible=false;
+						   copertina.visible=false;
+						   dacapo.visible=false;
+						  }
+		
+		
+		//funzione ricarica londra e gameover
+		function ricarica(){window.location.href='gioco.html'}
+		
+		function checkpausa(){ if(player.body.x>=10403.60){lives-= 3;
+		livesCrop.width = lives * livesIcon;
+        livesCounter.updateCrop(); 
+						   pausa1.visible=false;
+						   pausa2.visible=false;
+						   pausa3.visible=false;pausa4.visible=false;} else if(player.body.x<10403.60){window.location.href='gioco.html'}}
+		
+		function unpause(){
+	
+		
+		
+			foglioPausa.visible=false;
+			game.paused=false;
+			pausa1.visible=false;
+	pausa2.visible=false;
+	pausa3.visible=false;
+	pausa4.visible=false;
+			
+		
+	
+	}
+		
+		//funzione copertina
+		function index(){window.location.href='index.html'}
+		
+		
+		//FUNZIONE TOXIC GAS
+		function scontro_toxic_gas (player,esplodione){
+		immune=true;
+	    player.alpha=0.5;
+		lives-= 1;
+		livesCrop.width = lives * livesIcon;
+        livesCounter.updateCrop();
+	  if (game_over.visible==false){game.camera.flash(0xff0000, 500);}
+	 game.time.events.add(2000, function player_immune(){immune= false; player.alpha=1;});
+		}
+		
+		//FUNZIONE AEREI MANICA
+		function scontro_aereo_manica(ombrello, aereoGroup){
+		immune=true;
+	    ombrello.alpha=0.5;
+		lives-= 1;
+		livesCrop.width = lives * livesIcon;
+        livesCounter.updateCrop();
+	     if (game_over.visible==false){game.camera.flash(0xff0000, 500);}
+	    game.time.events.add(3000, function player_immune(){immune= false; ombrello.alpha=1;});
+		}
+		
+		//FUNZIONE SOLDATO SPARA
+		function scontro_soldato_spara(player, soldatoSparaGroup) {
+			lives-= 1;
+		livesCrop.width = lives * livesIcon;
+        livesCounter.updateCrop();
+	    immune=true;
+	       player.alpha=0.5;
+	       game.time.events.add(2000, function player_immune(){immune= false; player.alpha=1;});
+	        if (game_over.visible==false){game.camera.flash(0xff0000, 500);}	
+			
+		}
+		
+		//FUNZIONE PROIETTILI FUCILE
+		function scontro_proiettili_fucile(player, enemyBullets){
+	    enemyBullets.kill();
+		immune=true;
+	    player.alpha=0.5;
+		lives-= 1;
+		livesCrop.width = lives * livesIcon;
+        livesCounter.updateCrop();
+		 if (game_over.visible==false){game.camera.flash(0xff0000, 500);}
+		game.time.events.add(2000, function player_immune(){immune= false; player.alpha=1;});
+		}
+        
+		//SCONTRO PLAYER CON MISSILE AEREO 
+		function scontro_missile_aereo(player, missile){
+	missile.kill();
+	var explosionAereoAnimation = esplosioneAereo.getFirstExists(false);
+        explosionAereoAnimation.reset(missile.x, missile.y);
+        explosionAereoAnimation.play('kaboom_aereo', 20, false, true);
+	    immune=true;
+	    player.alpha=0.5;
+        lives-= 1;
+		livesCrop.width = lives * livesIcon;
+        livesCounter.updateCrop();
+	    if (game_over.visible==false){game.camera.flash(0xff0000, 500);}
+		game.time.events.add(2000, function player_immune(){immune= false; player.alpha=1;});
+		}
+		
+		//FUNZIONE ESPLOSIONE MISSILE AEREO
+		function missileEsplode(missile,platforms) {
+			missile.kill();
+	var explosionAereoAnimation = esplosioneAereo.getFirstExists(false);
+        explosionAereoAnimation.reset(missile.x, missile.y);
+        explosionAereoAnimation.play('kaboom_aereo', 20, false, true);
+		
+		}
+		
+
+//FINE FUNZIONI
+		
+function update () {
+ 
+	//COLLISIONI
+	game.physics.arcade.collide(player, limite);
+    game.physics.arcade.collide(cade, platforms);
+	game.physics.arcade.collide(player, platforms);
+	game.physics.arcade.collide(soldatoGroup, platforms, function patrolPlatform(soldato, platforms){if (soldato.body.velocity.x > 0 && soldato.right > platforms.right
+    || soldato.body.velocity.x < 0 && soldato.left < platforms.left) {
+        soldato.body.velocity.x *= -1;
+    }});
+	game.physics.arcade.collide(soldatoSparaGroup, platforms)
+	game.physics.arcade.collide(player, cubiM, function raccM(player, cubiM){
+		cubiM.kill();
+		cuboM.visible=true;
+		raccogliCubi.visible=true;
+	    game.time.events.add(4000, function sparisci () {raccogliCubi.kill();});
+	});
+	
+	game.physics.arcade.collide(ombrello, cubiA, function raccA(player, cubiA){cubiA.kill();cuboA.visible=true;});
+	game.physics.arcade.collide(player, cubiR, function raccA(player, cubiR){cubiR.kill();cuboR.visible=true;});
+	game.physics.arcade.collide(player, cubiY, function raccY(player, cubiY){cubiY.kill();cuboY.visible=true;});
+	game.physics.arcade.collide(cubiM, platforms);
+    game.physics.arcade.collide(cubiR, platforms);
+    game.physics.arcade.collide(cubiY, platforms);
+	game.physics.arcade.collide(player, esplosione, function esp(p,e){p.kill()});
+	game.physics.arcade.collide(player, cubo);
+    //game.physics.arcade.collide(player, interfaccia);
+    //game.physics.arcade.collide(ombrello, interfaccia);
+    game.physics.arcade.overlap(player, oggetto_orsetto, function prendi_orsetto(player, oggetto_orsetto){
+		oggetto_orsetto.kill();
+		pallino_1.visible=true;
+	});
+	
+	game.physics.arcade.overlap(player, oggetto_specchio, function prendi_specchio(player, oggetto_specchio){
+		oggetto_specchio.kill();
+		pallino_2.visible=true;
+	});
+	
+	game.physics.arcade.overlap(player, oggetto_ombrello, 
+	function raccogli(player,oggetto_ombrello){
+		oggetto_ombrello.kill();
+		pallino_3.visible=true;
+		player.kill();
+		ombrello.animations.play('vola');
+		game.camera.follow(ombrello);
+		
+		
+ });
+	
+	game.physics.arcade.overlap(player, oggetto_lampada, function prendi_lampada(player, oggetto_lampada){
+		
+		pallino_4.visible=true;
+		pallino_4.visible=true;
+		oggetto_lampada.kill();
+	});
+	
+	game.physics.arcade.overlap(player, oggetto_pianta, function prendi_pianta(player, oggetto_pianta){
+		
+		pallino_5.visible=true;
+		oggetto_pianta.kill();
+	});
+
+	game.physics.arcade.overlap(player, oggetto_sciroppo, function prendi_sciroppo(player, oggetto_sciroppo){
+		
+		pallino_6.visible=true;
+		oggetto_sciroppo.kill();
+	});
+	
+	game.physics.arcade.overlap(player, oggetto_aquilone, function prendi_aquilone(player, oggetto_aquilone){
+		
+		pallino_7.visible=true;
+		oggetto_aquilone.kill();
+	});
+	
+	game.physics.arcade.overlap(player, oggetto_appendiabiti, function prendi_appendiabiti(player, oggetto_appendiabiti){
+		
+		pallino_8.visible=true;
+		oggetto_appendiabiti.kill();
+	});
+	
+	game.physics.arcade.collide(ombrello, platforms);
+    game.physics.arcade.collide(ombrello, cubo);		
+	if (immune==false) {
+		game.physics.arcade.overlap(player, soldatoGroup, scontro_soldato);
+		game.physics.arcade.collide(player, minaLampo, esplodi);
+		game.physics.arcade.overlap(player, soldatoSparaGroup, scontro_soldato_spara);
+	    game.physics.arcade.overlap(player, enemyBullets.bullets, scontro_proiettili_fucile);
+	    game.physics.arcade.overlap(player, missile.bullets, scontro_missile_aereo);
+		game.physics.arcade.collide(player, spunte, scontro_spuntoni);	
+		game.physics.arcade.overlap(ombrello, aereoGroup, scontro_aereo_manica);	
+		if (esplodioneAnimation.frame==1 || esplodioneAnimation.frame==2 || esplodioneAnimation.frame==3 || esplodioneAnimation.frame==4 || esplodioneAnimation.frame==5 || esplodioneAnimation.frame==6 || esplodioneAnimation.frame==7) {game.physics.arcade.overlap(player,esplodione, scontro_toxic_gas)}
+	}
+	
+    game.physics.arcade.overlap(player, pillole, curati);
+    game.physics.arcade.collide(aereoBombeGroup, trasparente, function aereoTrasparente(aereoBombe, trasparente) 
+	{
+		
+	if (aereoBombe.body.velocity.x > 0 && aereoBombe.right > trasparente.right
+    || aereoBombe.body.velocity.x < 0 && aereoBombe.left < trasparente.left) {
+        aereoBombe.body.velocity.x *= -1; // reverse direction
+	}
+	});
+    game.physics.arcade.collide(missile.bullets, platforms, missileEsplode);
+	game.physics.arcade.collide(pillole, platforms);
+    game.physics.arcade.collide(player, casa);
+    game.physics.arcade.collide(player, nuvole_mobili);
+    game.physics.arcade.collide(player, nuvole_mobili_2);
+    if(player.body.y<nuvole_mobili_3.body.y){game.physics.arcade.collide(player, nuvole_mobili_3);}
+    game.physics.arcade.collide(player, nuvole_mobili_4, function toccaNuvole(player, nuvole_mobili_4){
+		if (nuvole_mobili_4.body.touching.up && nuvole_mobili_4.body.velocity.x>0){
+			parigi1.tilePosition.x -=0.6; 
+			parigi2.tilePosition.x -=0.5;
+			parigi3.tilePosition.x -=0.4;
+		    roma1.tilePosition.x -=0.6; 
+			roma2.tilePosition.x -=0.5; 
+			roma3.tilePosition.x -=0.4;
+		    nuvole.tilePosition.x -= 0.3;
+		}
+		else if (nuvole_mobili_4.body.touching.up && nuvole_mobili_4.body.velocity.x<0){
+			parigi1.tilePosition.x +=0.6; 
+			parigi2.tilePosition.x +=0.5;
+			parigi3.tilePosition.x +=0.4;
+		    roma1.tilePosition.x +=0.6; 
+			roma2.tilePosition.x +=0.5; 
+			roma3.tilePosition.x +=0.4;
+		    nuvole.tilePosition.x += 0.3;
+		}
+	});
+	
+	game.physics.arcade.collide(player, nuvole_mobili_5, function toccaNuvole(player, nuvole_mobili_5){
+		if (nuvole_mobili_5.body.touching.up && nuvole_mobili_5.body.velocity.x>0){
+			parigi1.tilePosition.x -=0.6; 
+			parigi2.tilePosition.x -=0.5;
+			parigi3.tilePosition.x -=0.4;
+		    roma1.tilePosition.x -=0.6; 
+			roma2.tilePosition.x -=0.5; 
+			roma3.tilePosition.x -=0.4;
+		    nuvole.tilePosition.x -= 0.3;
+		}
+		else if (nuvole_mobili_5.body.touching.up && nuvole_mobili_5.body.velocity.x<0){
+			parigi1.tilePosition.x +=0.6; 
+			parigi2.tilePosition.x +=0.5;
+			parigi3.tilePosition.x +=0.4;
+		    roma1.tilePosition.x +=0.6; 
+			roma2.tilePosition.x +=0.5; 
+			roma3.tilePosition.x +=0.4;
+		    nuvole.tilePosition.x += 0.3;
+		}
+	});
+	
+	
+	game.physics.arcade.collide(player, nuvole_mobili_7, function toccaNuvole(player, nuvole_mobili_7){
+		
+		if (nuvole_mobili_7.body.touching.up && nuvole_mobili_7.body.velocity.x>0){
+			parigi1.tilePosition.x -=0.6; 
+			parigi2.tilePosition.x -=0.5;
+			parigi3.tilePosition.x -=0.4;
+		    roma1.tilePosition.x -=0.6; 
+			roma2.tilePosition.x -=0.5; 
+			roma3.tilePosition.x -=0.4;
+		    nuvole.tilePosition.x -= 0.3;
+		}
+	});
+	
+	if (player.body.x>=10403.60 && player.body.x<10950 && checkpointManica.body.y>660){checkpointManica.body.y -= 0.5; } if (checkpointManica.body.y==650){checkpointManica.body.y +=0.5;}
+	
+	if (player.body.x>=20900 && player.body.x<21600 && checkpointParigi.body.y>660){checkpointParigi.body.y -= 0.5; } if (checkpointParigi.body.y==650){checkpointParigi.body.y +=0.5;}
+	
+	if (player.body.x>=30900 && player.body.x<31600 && checkpointRoma.body.y>660){checkpointRoma.body.y -= 0.5;} if (checkpointRoma.body.y==650){checkpointRoma.body.y +=0.5;}
+	
+	
+	soldatoGroup.forEach(function (soldato) {
+        if (soldato.body.velocity.x < 0) soldato.animations.play('left');
+        else soldato.animations.play('right');
+    });
+	
+	soldatoSparaGroup.forEach(function (soldatoSpara) {
+        if (soldatoSpara.body.velocity.x == 0) soldatoSpara.animations.play('left_Spara');
+       
+    });
+	
+	
+     aereoGroup.forEach(function(aereoAnimation) {if (ombrello.body.x>11000) {aereoAnimation.animations.play('left_manica');
+									   aereoAnimation.body.velocity.x=-300;
+									  }
+	});
+    
+	
+	aereoBombeGroup.forEach(function (aereoBombe) {
+        if (aereoBombe.body.velocity.x < 0) aereoBombe.animations.play('left_vola');
+        else aereoBombe.animations.play('right_vola');
+    });
+	
+	if (ombrello.body.x>21000 && ombrello.body.x<21005 ){ombrello.animations.play('vola_2'); game.time.events.add(500, function tempo(){ ombrello.kill();player.reset(ombrello.body.x, ombrello.body.y); game.camera.follow(player);}) }
+	if (ombrello.body.velocity.x>0 && ombrello.alive) {case1.tilePosition.x -=1.5;
+													   case2.tilePosition.x -=1.25;
+													   case3.tilePosition.x -=1;
+													  manica1.tilePosition.x -=1.5;
+													  manica2.tilePosition.x -=1.25;
+													  parigi1.tilePosition.x -=1.5;
+													  parigi2.tilePosition.x -=1.25;
+													  parigi3.tilePosition.x -=1;
+													  nuvole.tilePosition.x -=0.75}
+	
+    player.body.velocity.x = 0;
+    soldato_ve=0;
+    nuvole_ve=0;
+	ombrello.body.acceleration.y=0;
+    
+    if (soldatoSpara.frame==0){enemyBullets.trackSprite(soldatoSpara, 0, 0);
+    var enemy = soldatoSparaGroup.getClosestTo(player);
+    enemyBullets.trackSprite(enemy);
+	enemyBullets.fireAngle=-180;
+    enemyBullets.fire();
+						}
+	
+	missile.trackSprite(aereoBombe,0,0);
+    var missilistica = aereoBombeGroup.getClosestTo(player);
+    missile.trackSprite(missilistica);
+	missile.fireAngle=90;
+    missile.fire();
+	
+	
+	
+	
+	
+// sotto il terreno 
+    if (player.body.y> ground) { 
+       
+        lives-= 3;
+		livesCrop.width = lives * livesIcon;
+        livesCounter.updateCrop();
+	}
+// ombrello che si muove
+    if (ombrello.frame==4 && ombrello.alive && game_over.visible==false){
+    if (cursors.up.isDown)
+    {
+        ombrello.body.acceleration.y= -400;
+        
+    }
+    else if (cursors.down.isDown)
+    {
+        ombrello.body.acceleration.y = 400;
+        
+    }
+	else{
+		player.body.velocity.y=0;
+	    }
+	}
+   if(ombrello.body.y<800){ombrello.body.velocity.x=200;}
+	
+
+// nuvole_mobili
+if (nuvole_mobili.body.y>550) {nuvole_mobili.body.velocity.y= -100}
+else if(nuvole_mobili.body.y<270) {nuvole_mobili.body.velocity.y= 100}
+	
+if (nuvole_mobili_2.body.y>600) {nuvole_mobili_2.body.velocity.y= -100}
+else if(nuvole_mobili_2.body.y<220) {nuvole_mobili_2.body.velocity.y= 100}
+	
+if (nuvole_mobili_3.body.y>650) {nuvole_mobili_3.body.velocity.y= -100}
+else if(nuvole_mobili_3.body.y<450) {nuvole_mobili_3.body.velocity.y= 100}
+	
+if (nuvole_mobili_4.body.x>29875) {nuvole_mobili_4.body.velocity.x= -100}
+else if(nuvole_mobili_4.body.x<29150) {nuvole_mobili_4.body.velocity.x= 100}
+
+if (nuvole_mobili_5.body.x>30700) {nuvole_mobili_5.body.velocity.x= -100}
+else if(nuvole_mobili_5.body.x<29975) {nuvole_mobili_5.body.velocity.x= 100}
+	
+if (nuvole_mobili_7.body.x>38450) {nuvole_mobili_7.body.velocity.x= -100}
+else if(nuvole_mobili_7.body.x<38000) {nuvole_mobili_7.body.velocity.x= 100}
+
+   
+//salute
+if (lives<1){   minaLampo.callAll('kill');
+			    pillole.callAll('kill');
+			           
+	                    lives=3;
+						   livesCrop.width = maxLives * livesIcon;
+                           livesCounter.updateCrop();  if (foglioPausa.visible==true) {game_over.visible=false;
+						   check.visible=false;
+						   copertina.visible=false;
+						   dacapo.visible=false;foglioPausa.visible=false;} else {game_over.visible=true; copertina.visible=true;
+						   dacapo.visible=true;
+						   if(player.body.x<10403.60){check1.visible=true;}  else if (player.body.x>=10403.60){check.visible=true;}
+						  }
+	
+	
+			           
+			 		// CHECK MANICA
+			          if((ombrello.body.x<21000 && ombrello.body.x>11000) || (player.body.x>10403.60 && player.body.x<12000)) {
+						minaLampo.callAll('revive'); 
+						pillole.callAll('revive'); 
+						oggetto_ombrello.kill();
+						pallino_3.visible=true;
+						cuboA.visible=false;
+						cubiA.reset(20500, value21);
+						player.kill();
+						ombrello.animations.play('vola');
+						aereoGroup.callAll('kill');											   
+			            aerei_volano_manica();
+						ombrello.body.acceleration.y=0
+						ombrello.body.velocity.y=0
+						ombrello.body.x=10870;
+						ombrello.body.y=637;
+				        manica1.tilePosition.x=-2250;
+						game.camera.follow(ombrello);
+						manica2.tilePosition.x = 3200;
+						parigi1.tilePosition.x = 4000;
+						parigi2.tilePosition.x = 2500;
+						parigi3.tilePosition.x = 2200;
+						roma1.tilePosition.x = 12045;
+						roma2.tilePosition.x = 12050;
+						roma3.tilePosition.x = 12050;
+					    case1.tilePosition.x=1690;											   
+			case1.visible=true;
+					    case2.tilePosition.x=1580;											   
+			case2.visible=true;	
+						case3.tilePosition.x=1400;											   
+			case3.visible=true;
+						   
+						  
+						   
+					   }
+	
+	                   // CHECK PARIGI
+			           if(player.body.x<30900 && player.body.x>=20400) {
+						   minaLampo.callAll('revive'); 
+						   pillole.callAll('revive'); 
+						   oggetto_lampada.revive();
+						   oggetto_pianta.revive();	
+						   cubiR.reset(23900,250);
+						   player.body.x=21101; 
+						   player.body.y=300;
+						   parigi1.tilePosition.x = 1000;
+						   pallino_4.visible=false;											
+						   pallino_5.visible=false;
+						   cuboR.visible=false;
+						   case1.visible=false;
+						   case2.visible=false;
+						   case3.visible=false;
+						   parigi1.tilePosition.x = 11500;
+						   parigi2.tilePosition.x = 10750;
+						   parigi3.tilePosition.x = 11140;
+						   roma1.tilePosition.x = 12045;
+						   roma2.tilePosition.x = 12050;
+						   roma3.tilePosition.x = 12050;
+						   manica1.alpha=0;
+						   manica2.alpha=0;
+						   roma1.visible=false;
+						   roma2.visible=false;
+						   roma3.visible=false
+					
+					   }
+			 
+		
+
+	
+	
+//CHECK ROMA
+	
+	if (player.body.x>=30900) {
+		                   minaLampo.callAll('revive');
+		                   pillole.callAll('revive'); 
+	                       player.body.x=30901; 
+						   player.body.y=300;
+						   oggetto_sciroppo.revive();
+						   oggetto_aquilone.revive();	
+						   oggetto_appendiabiti.revive();
+						   cubiY.reset(38750,200);
+						   pallino_6.visible=false;
+						   pallino_7.visible=false;											
+						   pallino_8.visible=false;
+						   cuboY.visible=false;
+						   case1.visible=false;
+						   case2.visible=false;
+						   case3.visible=false;
+						   parigi1.tilePosition.x = 14030;
+						   roma1.tilePosition.x = 11360;
+						   roma2.tilePosition.x = 11450;
+						   roma3.tilePosition.x = 11550;}
+
+
+
+
+
+}
+			        
+					   		
+	if (ombrello.body.x==10873){
+								manica1.visible=true;
+								parigi1.visible=false;
+								parigi2.visible=false;
+								parigi3.visible=false
+						   
+							  }
+	
+	if (ombrello.body.x>13000 && ombrello.body.x<19000) {manica2.visible=true;
+							  } else  {manica2.visible=false;}
+	
+	
+	
+
+	
+
+	
+	
+//giocatore che si muove
+	
+		
+    if (cursors.left.isDown && player.alive && lives>0 && game_over.visible==false && !player.alpha==0 && finaletop.visible==false && finale.visible==false) 
+    { if (playerOldPose.x != player.body.x && !player.body.touching.left)
+     {
+         nuvole.tilePosition.x +=0.75
+		 monumenti.tilePosition.x +=1.25;
+         case3.tilePosition.x +=1;
+         case2.tilePosition.x +=1.25;
+         case1.tilePosition.x +=1.5;
+		
+		 manica1.tilePosition.x +=1.5;
+		  manica2.tilePosition.x +=1.25;
+		 if (parigi1.visible==true){parigi1.tilePosition.x +=1.5; parigi2.tilePosition.x +=1.25; 
+									parigi3.tilePosition.x +=1}
+		 
+		 if (roma1.visible==true){roma1.tilePosition.x +=1.5; roma2.tilePosition.x +=1.25; roma3.tilePosition.x +=1;}
+         
+    
+     }
+         player.body.velocity.x = -250;
+         
+         if (facing != 'left')
+        {
+            player.animations.play('left');
+            facing = 'left';
+        }
+        
+        
+	
+            
+       
+    }
+    else if (cursors.right.isDown && player.alive && lives>0 && game_over.visible==false  && !player.alpha==0 && finaletop.visible==false && finale.visible==false)  
+    { if (playerOldPose.x != player.body.x && !player.body.touching.right)
+     {
+           
+		    monumenti.tilePosition.x -=1.25;
+            case3.tilePosition.x -=1;
+            case2.tilePosition.x -=1.25;
+            case1.tilePosition.x -=1.5;
+		 nuvole.tilePosition.x -=0.75;
+		 
+		 manica1.tilePosition.x -=1.5
+		 manica2.tilePosition.x -=1.25;
+		if (parigi1.visible==true){parigi1.tilePosition.x -=1.5; parigi2.tilePosition.x -=1.25;
+								  parigi3.tilePosition.x -=1}
+		 if (roma1.visible==true){roma1.tilePosition.x -=1.5; roma2.tilePosition.x -=1.25; roma3.tilePosition.x -=1;}
+   
+     }
+       
+        player.body.velocity.x = 250;
+        if (facing != 'right')
+        {
+            player.animations.play('right');
+            facing = 'right';
+        }
+        
+   
+             
+      
+    }
+    
+     else
+    {
+        if (facing != 'idle')
+        {
+            player.animations.stop();
+
+            if (facing == 'left')
+            {
+                player.frame = 8;
+            }
+            else
+            {
+                player.frame = 8;
+            }
+
+            facing = 'idle';
+        }
+    }
+    
+    if(!player.body.onFloor() && !player.body.touching.down) {
+        if(facing == 'left') {
+            player.frame = 5;
+        } else if(facing == 'right') player.frame = 11;
+        else player.frame = 8;        
+    } 
+ 
+
+    if (jumpButton.isDown && (player.body.onFloor() || player.body.touching.down) && !player.alpha==0 && game_over.visible==false && finaletop.visible==false && finale.visible==false)
+    {
+        player.body.velocity.y = -370;
+		
+    }
+
+	if (ombrello.body.x>11900 || player.body.x>11900) {case1.visible=false;
+							  case2.visible=false;
+							   
+							  }
+	if (ombrello.body.x>11800 || player.body.x>11800){case3.visible=false;}
+	
+	if (player.body.x>=9000 && player.body.x<22500){manica1.visible=true;  
+							} else if (player.body.x<9000 || player.body.x>=22500){manica1.visible=false}
+	
+	
+	
+	if (ombrello.body.x>18000 || player.body.x>=20700){  parigi1.visible=true; parigi2.visible=true; parigi3.visible=true; }
+	if (player.body.x>=29000) {  roma1.visible=true; roma2.visible=true; roma3.visible=true} 
+	if (player.body.x>=30800) { parigi2.visible=false; parigi3.visible=false;} 
+	if (player.body.x>=34000) { parigi1.visible=false;}
+	
+	//Finale
+	
+	if(!cade.body.touching.down){cade.animations.play('walk');	}
+	if(cade.body.touching.down){cade.animations.play('rialza');	}
+	if (cade.frame==19){cade.visible=false; player.alpha=1;}
+	
+	if(player.body.x>44504){accendi=true}
+	if (player.body.x>44500 && accendi==false){casa.animations.play('apri');}
+	
+	if (player.body.x>44750){if(pallino_1.visible==true && pallino_2.visible==true && pallino_3.visible==true && pallino_4.visible==true && pallino_5.visible==true && pallino_6.visible==true && pallino_7.visible==true && pallino_8.visible==true) {finaletop.visible=true; 
+	
+	
+	fine.visible=true
+	
+	}
+	
+	else {finale.visible=true; 
+		  
+		  
+		 
+		  fine.visible=true
+		 
+		 }
+		
+	
+	}
+	
+	
+	//Da Aggiungere
+	if ((finaletop.visible==true || fine.visible==true) && cuboM.visible==true && cuboA.visible==true && cuboR.visible==true && cuboY.visible==true) {extra.visible=true}
+	
+							
+	
+}
+	function render() {//game.debug.body(player);
+		               
+	                   //game.debug.body(ombrello);
+		              
+	                   //soldatoGroup.forEach(game.debug.body,game.debug,"#dd00dd",false);
+					   //soldatoSparaGroup.forEach(game.debug.body,game.debug,"#dd00dd",false);
+					   //aereoGroup.forEach(game.debug.body,game.debug,"#dd00dd",false);
+		               //esplodione.forEach(game.debug.body,game.debug,"#dd00dd",false);
+		               //minaLampo.forEach(game.debug.body,game.debug,"#dd00dd",false);
+		               //cubo.forEach(game.debug.body,game.debug,"#dd00dd",false);
+					   //platforms.forEach(game.debug.body,game.debug,"#dd00dd",false);
+					  //game.debug.spriteCoords(player,25,100);
+		               //game.debug.spriteCoords(ombrello,750,100);
+					   //missile.forEach(game.debug.body,game.debug,"#dd00dd",false);
+		              
+		               //game.debug.inputInfo(32, 32);
+		              
+	}  
+
+}
+	
+	
+	
+	
+		</script>
+    </body>
+</html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Fuori Rotta - Mary Poppins 10 anni dopo</title>
+	
+<style>
+* {box-sizing: inherit}
+body {font-family: Heebo, Verdana, sans-serif; margin:0}
+.mySlides {display: none}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  width: 1024px; height: 768px;
+  position: relative;
+  margin: auto;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+	text-align: right
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 40px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+	max-height: 20px
+}
+	.prev{
+		left: 880px;
+		top: 710px
+	}
+/* Position the "next button" to the right */
+.next {
+  right: 20px;
+	top: 710px;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  color: rgba(255,255,255,0.3);
+}
+
+
+
+
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 2s;
+  animation-name: fade;
+  animation-duration: 0s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: 0} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: 0} 
+  to {opacity: 1}
+}
+
+
+</style>
+<link href="Slide.css" rel="stylesheet" type="text/css">
+</head>
+<body style="margin: auto;background-image: url('Immagini/sfond4.png'); max-height: 768px">
+<div  class="container">
+		
+<!-- copertina home --><img id="copertina" src="Immagini/sfondonuovo.png" alt="" style="transition: all 0.6s linear;  opacity: 1; position: relative; top: 0; left: 0; z-index: -1;" />
+<!-- cubo play--><div id="copertina1" style="transition: all 0.6s linear; opacity: 1; position: relative; max-height: 200px; max-width: 200px; top: 320px; left: -730px; z-index: 3;"><a href="gioco.html"><img alt="" src="Immagini/Tavoladisegno2copia33.png" style="width: 158px; height: auto;transition: all 0.3s linear; opacity: 0; position: relative; top: 120px; left: -5px;" id="testo" ><img onclick="via()" id="cubo" onmouseover="mouseOver()" onmouseout="mouseOut()" src="Immagini/cuborosso.png" alt="" class="bottone"  /></a></div>
+<!-- libro storia --><div id="copertina2" style="opacity: 1;transition: all 0.6s linear;position: relative; max-height: 200px; max-width: 200px; top: 450px; left: -700px; z-index: 1;"><img alt="" src="Immagini/Tavoladisegno2copia233.png" style="width: 158px; height: auto;transition: all 0.3s linear;opacity: 0;position: relative; top: 115px; left: -15px;" id="testo1" ><img onClick="story()" id="libro" onmouseover="mouseOver1()" onmouseout="mouseOut1()"  src="Immagini/fghjkjhg.png" alt="" class="bottone1"  /></div>
+<!-- penna autori --><div id="copertina3" style="opacity: 1;transition: all 0.6s linear;position: relative; max-height: 200px; max-width: 200px; top: 270px; left: -1200px; z-index: 1;"><img alt="" src="Immagini/Tavoladisegno233.png" style="width: 158px; height: auto;transition: all 0.3s linear;opacity: 0;position: relative; top: 120px; left: -33px;" id="testo2" ><img id="penna" src="Immagini/gggg.png" onClick="autori()" alt="" class="bottone1" onmouseover="mouseOver2()" onmouseout="mouseOut2()"  /> </div>
+		
+	<!-- storia 1 -->	<div id="1" style="opacity: 0; transition: all 0.6s linear; position: relative; top: -1px;  left: -1498px; z-index: -10;"> <img  src="Immagini/1.png" alt=""/> </div>
+		
+	<!-- autori e crediti -->	<div id="auto" style="opacity: 0; transition: all 0.6s linear;position: relative; top: 0px; left: -2522px; z-index: -10100;"> <img    src="Immagini/autoriecrediti.png" alt=""/> </div>
+		<div id="auto1" style="transition: all 0.6s linear;  position: relative; left:-3398px;top: 500px; z-index:10099;max-height: 200px; max-width: 200px; opacity: 0; "> <img alt="" src="Immagini/Tavoladisegno2copia354.png" style="width: 158px; height: auto;transition: all 0.3s linear;opacity: 0;position: relative; top:20px; left: 0px;" id="testo3" > <img id="indietro" src="Immagini/cuboblu.png" onClick="copertina()"  alt="" class="bottone" style="position: relative; top:-100px;"  onmouseover="mouseOver3()" onmouseout="mouseOut3()"  /></div>  
+		
+	<img id="titolo" src="Immagini/Tavoladisegno111.png" alt="" style="transition: all 0.6s linear;position: relative; top: -30px; left: -3704px; z-index: 0;" />
+
+	
+	<div id="game" style="opacity:0;z-index: -200000000; position: relative; top: 0px; left: -4728px">
+  <img src="Immagini/Tavoladisegno154.png" width="1024" height="768" alt=""/> </div> 
+	
+	
+	
+	
+	
+	
+	
+	</div>
+<div class="slideshow-container" id="slider" style="transition: all 0.6s linear;opacity: 0;position: relative; top: -769px; z-index: -200000; max-height: 200px">
+
+<div class="mySlides fade">
+  <div class="numbertext"></div>
+  <img src="Immagini/1.png" style="width:100%">
+  <div class="text"></div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext"></div>
+  <img src="Immagini/2.png" style="width:100%">
+  <div class="text"></div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext"></div>
+  <img src="Immagini/3.png" style="width:100%">
+  <div class="text"></div>
+</div>
+	<div class="mySlides fade">
+  <div class="numbertext"></div>
+  <img src="Immagini/4.png" style="width:100%">
+  <div class="text"></div>
+</div>
+	<div class="mySlides fade">
+  <div class="numbertext"></div>
+  <img src="Immagini/5.1.png" style="width:100%">
+  <div class="text"></div>
+</div>
+	<div class="mySlides fade">
+  <div class="numbertext"></div>
+  <img src="Immagini/6.png" style="width:100%">
+  <div class="text"></div>
+</div>
+	<div class="mySlides fade">
+  <div class="numbertext"></div>
+  <img src="Immagini/7.png" style="width:100%">
+  <div class="text"></div>
+</div>
+	<div class="mySlides fade">
+  <div class="numbertext"></div>
+  <img src="Immagini/8.png" style="width:100%">
+  <div class="text"></div>
+</div>
+
+<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+<a class="next" onclick="plusSlides(1)">&#10095;</a>
+	
+
+
+	</div>
+
+
+<script>
+var slideIndex = 1;
+	var indietro=false
+			var Enabled=true;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+	
+	
+function mouseOver() {
+  document.getElementById("testo").style.opacity=1;
+	document.getElementById("cubo").style.opacity=0.3;
+}
+		
+function via() { if(Enabled == true)
+{
+	
+	
+	Enabled=false;
+}
+			   }
+			
+function autori() {  if(Enabled == true)
+{
+	document.getElementById("copertina").style.opacity=0;
+	document.getElementById("copertina1").style.opacity=0;
+	document.getElementById("copertina2").style.opacity=0;
+	document.getElementById("copertina3").style.opacity=0;
+	document.getElementById("titolo").style.opacity=0;
+	document.getElementById("auto").style.opacity=1;
+	document.getElementById("auto1").style.opacity=1;
+	Enabled=false;
+	indietro=true;
+}
+}
+			
+			function copertina() {  if(indietro == true)
+				{
+	document.getElementById("copertina").style.opacity=1;
+	document.getElementById("copertina1").style.opacity=1;
+	document.getElementById("copertina2").style.opacity=1;
+	document.getElementById("copertina3").style.opacity=1;
+	document.getElementById("titolo").style.opacity=1;
+	document.getElementById("auto").style.opacity=0;
+	document.getElementById("auto1").style.opacity=0;
+				document.getElementById("indietro").style.opacity=0;
+				Enabled=true;
+				indietro=false;
+
+				}
+
+}
+			
+		
+			
+function story() { if(Enabled == true)
+{
+	document.getElementById("copertina").style.opacity=0;
+	document.getElementById("copertina1").style.opacity=0;
+	document.getElementById("copertina2").style.opacity=0;
+	document.getElementById("copertina3").style.opacity=0;
+	document.getElementById("titolo").style.opacity=0;
+	
+	document.getElementById("auto").style.opacity=0;
+	document.getElementById("auto1").style.opacity=0;
+	document.getElementById("slider").style.zIndex=200;
+	document.getElementById("slider").style.opacity=1;
+	Enabled=false;
+	slideIndex = 1;
+}
+				 }
+
+function mouseOut() {
+  document.getElementById("testo").style.opacity=0;
+	document.getElementById("cubo").style.opacity=1;
+}
+		function mouseOver1() {
+  document.getElementById("testo1").style.opacity=1;
+	document.getElementById("libro").style.opacity=0.3;
+}
+
+function mouseOut1() {
+  document.getElementById("testo1").style.opacity=0;
+	document.getElementById("libro").style.opacity=1;
+}
+		function mouseOver2() {
+  document.getElementById("testo2").style.opacity=1;
+			document.getElementById("penna").style.opacity=0.3;
+}
+
+function mouseOut2() {
+  document.getElementById("testo2").style.opacity=0;
+	document.getElementById("penna").style.opacity=1;
+}
+
+function mouseOver3() {
+  document.getElementById("testo3").style.opacity=1;
+			document.getElementById("indietro").style.opacity=0.3;
+}
+
+function mouseOut3() {
+  document.getElementById("testo3").style.opacity=0;
+	document.getElementById("indietro").style.opacity=1;
+}
+
+
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {location.href="gioco.html" }    
+  if (n < 1) {document.getElementById("slider").style.zIndex=-2000200; Enabled=true;document.getElementById("copertina").style.opacity=1;
+	document.getElementById("copertina1").style.opacity=1;
+	document.getElementById("copertina2").style.opacity=1;
+	document.getElementById("copertina3").style.opacity=1;
+	document.getElementById("titolo").style.opacity=1;
+			document.getElementById("slider").style.opacity=0;
+			 slideIndex = 1}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "flex";  
+  
+}
+	
+	
+	
+</script>
+
+</body>
+</html>
