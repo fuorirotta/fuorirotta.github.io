@@ -24,7 +24,7 @@
 a {cursor: default}
 
 
-.container {
+.container {position: relative;
   margin: auto;
   width: 1024px;
 	height: 768px;
